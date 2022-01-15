@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="loginForm" type="ft.com.LoginForm"/>
+    <!--
+    <form-bean name="nmeSrchForm" type="ft.com.contact.SearchContactFrm"/>
+    -->
+    <form-bean name="dayTermsForm" type="ft.com.masters.DayTermsFrm"/>
+     <form-bean name="countryCityForm" type="ft.com.masters.CountryFrm"/>
+     <form-bean name="RapSyncMprpForm" type="ft.com.masters.RapSyncMprpForm"/>
+          <form-bean name="labSyncMprpForm" type="ft.com.masters.LabSyncPrpForm"/>
+<form-bean name="adjustmntForm" type="ft.com.masters.AdjustmntForm"/>
+     <form-bean name="processMasForm" type="ft.com.masters.ProcessMasterFrm"/>
+    <form-bean name="insGrpForm" type="ft.com.masters.InsGrpFrm"/>
+    <form-bean name="brcGrpAadatForm" type="ft.com.masters.BrcGrpAadatFrm"/>
+    <form-bean name="mprpForm" type="ft.com.masters.MprpForm"/>
+    <form-bean name="prpForm" type="ft.com.masters.PrpForm"/>
+    <form-bean name="atrDtlSubForm" type="ft.com.masters.AtrDtlSubForm"/>
+    <form-bean name="deptForm" type="ft.com.masters.DeptForm"/>
+    <form-bean name="deptPrcForm" type="ft.com.masters.DeptPrcForm"/>
+    <form-bean name="deptEmpForm" type="ft.com.masters.DeptEmpForm"/>
+    <form-bean name="atrDtlForm" type="ft.com.masters.AtrDtlForm"/>
+    <form-bean name="xrtRteForm" type="ft.com.masters.XrtRteForm"/>
+    <form-bean name="stkCtgForm" type="ft.com.masters.StkCategoryAccessFrm"/>
+     <form-bean name="curForm" type="ft.com.masters.McurrenciesForm"/>
+     <form-bean name="sizeDefForm" type="ft.com.masters.SizeDefForm"/>
+     <form-bean name="pricingsizeDefForm" type="ft.com.masters.PricingSizeDefForm"/>
+      <form-bean name="subAtrDtlFrm" type="ft.com.masters.SubAtrDtlForm"/>
+     <form-bean name="PriceCalc" type="ft.com.pricing.PriceCalcFrm"/>
+     <form-bean name="holidayFrm" type="ft.com.masters.HolidayForm" />
+     <form-bean name="repricefrm" type="ft.com.pricing.RepriceFrm" />
+     <form-bean name="excelutilityfrm" type="ft.com.pricing.ExcelUtilityForm" />
+      <form-bean name="transferToMktForm" type="ft.com.pricing.TransferToMktForm" />
+     <form-bean name="loyaltyCtgForm" type="ft.com.masters.LoyaltyCtgFrom" />
+     <form-bean name="loyaltySlabsForm" type="ft.com.masters.LoyaltySlabsForm" />
+      <form-bean name="priceChangesForm" type="ft.com.pricing.PriceChangesForm" />
+      <form-bean name="SubSizeDefForm" type="ft.com.masters.SubSizeDefForm"/>
+      <form-bean name="StockSttForm" type="ft.com.masters.StockSttForm"/>
+      <form-bean name="ClientInfoForm" type="ft.com.masters.ClientInfoForm"/>
+            <form-bean name="RapUsrInfoForm" type="ft.com.masters.RapUsrInfoForm"/>
+      <form-bean name="proposToLiveForm" type="ft.com.pricing.ProposToLiveForm" />
+      <form-bean name="MpairMasterForm" type="ft.com.masters.MpairMasterForm"/>
+      <form-bean name="MpairPropertyForm" type="ft.com.masters.MpairPropertyForm"/>
+       <form-bean name="ReportModuleForm" type="ft.com.masters.ReportModuleForm"/>
+       <form-bean name="ModulePropertyForm" type="ft.com.masters.ModulePropertyForm"/>
+       <form-bean name="ManualPChangeForm" type="ft.com.pricing.ManualPChangeForm"/>
+       <form-bean name="rapNetForm" type="ft.com.pricing.RapnetForm"/>
+       <form-bean name="dynamicPropertyForm" type="ft.com.DynamicPropertyForm"/>
+       <form-bean name="byrForm" type="ft.com.masters.ByrSetupForm"/>
+       <form-bean name="msgDtlForm" type="ft.com.masters.MsgDtlForm"/>
+       <form-bean name="chargesForm" type="ft.com.masters.ChargesForm"/>
+       <form-bean name="activityForm" type="ft.com.masters.ActivityForm"/>
+       <form-bean name="aginwardForm" type="ft.com.masters.InwardForm"/>
+       <form-bean name="analysisGridFmtForm" type="ft.com.masters.AnalysisGridFmtForm"/>
+        <form-bean name="EmpDepForm" type="ft.com.masters.EmpDepForm"/>
+       <form-bean name="lotPrpForm" type="ft.com.masters.LotPrpForm"/>
+       <form-bean name="mruleForm" type="ft.com.masters.MruleForm"/>
+       <form-bean name="ruleDtlForm" type="ft.com.masters.RuleDtlForm"/>
+       <form-bean name="prcEmpForm" type="ft.com.masters.PrcEmpForm"/>
+        <form-bean name="happyHoursForm" type="ft.com.masters.HappyHoursForm"/>
+        <form-bean name="matchPairForm" type="ft.com.masters.MatchPairForm"/>
+         <form-bean name="mszPcsform" type="ft.com.masters.MszPcsForm"/>
+		  <form-bean name="mfgFileSeqLogForm" type="ft.com.masters.MfgFileSeqLogForm"/>
+  </form-beans>
+        <global-forwards>
+        <forward name="logout" path="/logout.jsp" />
+        <forward name="chktimeoutpage" path="/loginInvalid.jsp" />
+        <forward name="unauthorizedpage" path="/unauthorized.jsp" />
+        <forward name="connExistspage" path="/connExists.jsp" />  
+        </global-forwards>
+  <action-mappings>
+      <action path="/ajaxAction" 
+        type="ft.com.AjaxAction" />
+        
+      <action path="/login"
+        type="ft.com.LoginAction"
+        name="loginForm"
+        parameter="method"
+        scope="session">
+        <forward name="loginsuccess" path="/home.jsp" />
+         <forward name="home" path="/home.jsp" />
+         <forward name="loadOTP" path="/oneTimePass.jsp" />
+        <forward name="securityPg" path="/SecurityPage.jsp" />
+        <forward name="error" path="/login.jsp" />
+        <forward name="accountfail" path="/index.jsp" />
+        <forward name="captchaerror" path="/login.jsp" />
+        <forward name="dbnotavl" path="/dbnotavl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+              <action path="/masters/mfgFileSeqLogAction"
+        type="ft.com.masters.MfgFileSeqLogAction"
+        name="mfgFileSeqLogForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/mfgFileSeqLog.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/home"
+        type="ft.com.HomeAction"
+        name="loginForm"
+        parameter="method"
+        scope="request">
+        <forward name="home" path="/home.jsp" />      
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+      <action path="/ideaBank/bank"
+        type="ft.com.HomeAction"
+        name="loginForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/ideaBank/ideaBankPage.jsp" />   
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+
+        </action>
+    
+    
+        <action path="/masters/msgdtl"
+          type="ft.com.masters.MsgDtlAction"
+          name="msgDtlForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/msgdtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+
+       </action>
+       
+          <action path="/masters/lotprp"
+          type="ft.com.masters.LotPrpAction"
+          name="lotPrpForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/lotprp.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+
+       </action>
+       
+       <action path="/masters/cdlotprp"
+          type="ft.com.masters.CDLotPrpAction"
+          name="lotPrpForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/CDlotprp.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+
+       </action>
+       
+ <action path="/masters/analysisgrid"
+          type="ft.com.masters.AnalysisGridFmtAction"
+          name="analysisGridFmtForm"
+           parameter="method"
+           scope="request">
+          <forward name="load" path="/masters/analysisgrid.jsp" />
+                  <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       </action>
+   <action path="/masters/dayTerms"
+        type="ft.com.masters.DayTermsAction"
+        name="dayTermsForm"
+        parameter="method"
+        scope="request">
+        <forward name="dayterms" path="/masters/dayTerms.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+   
+   <action path="/masters/insuranceGrp"
+        type="ft.com.masters.InsGrpAction"
+        name="insGrpForm"
+        parameter="method"
+        scope="request">
+        <forward name="insgrp" path="/masters/insuranceGrp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+   
+   <action path="/masters/brcGrpAadat"
+        type="ft.com.masters.BrcGrpAadatAction"
+        name="brcGrpAadatForm"
+        parameter="method"
+        scope="request">
+        <forward name="brcgrpaadat" path="/masters/brcGrpAadat.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+
+    <action path="/masters/EmpDep"
+        type="ft.com.masters.EmpDepAction"
+        name="EmpDepForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/masters/EmpDep.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+
+     <action path="/masters/country"
+        type="ft.com.masters.CountryAction"
+        name="countryCityForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/country.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+         <action path="/masters/rapsyncmprp"
+        type="ft.com.masters.RapSyncMprpAction"
+        name="RapSyncMprpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/rapsyncmprp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+        <action path="/masters/rapsyncprp"
+        type="ft.com.masters.RapSyncPrpAction"
+        name="RapSyncMprpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/rapsyncprp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+      <action path="/masters/labsyncmprp"
+        type="ft.com.masters.LabSyncMprpAction"
+        name="labSyncMprpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/labSyncmprp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+        <action path="/masters/labsyncprp"
+        type="ft.com.masters.LabSyncPrpAction"
+        name="labSyncMprpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/labsyncprp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+
+     <action path="/masters/city"
+        type="ft.com.masters.CityAction"
+        name="countryCityForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/city.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+   
+   
+     <action path="/masters/processMstAction"
+        type="ft.com.masters.ProcessMasterAction"
+        name="processMasForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/processMaster.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+  <action path="/masters/processPrpAction"
+        type="ft.com.masters.ProcessAlwAction"
+        name="processMasForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/processToAlw.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/masters/prcToPrcAction"
+        type="ft.com.masters.ProcessToProcessAction"
+        name="processMasForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/procToProc.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/masters/propertyMst"
+        type="ft.com.masters.MprpAction"
+        name="mprpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/mprpMaster.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+     <action path="/masters/property"
+        type="ft.com.masters.PrpAction"
+        name="prpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/properties.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+         <action path="/masters/department"
+        type="ft.com.masters.DeptAction"
+        name="deptForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/deptMaster.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/masters/deptToProcessAction"
+        type="ft.com.masters.DeptPrcAction"
+        name="deptPrcForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/deptProcess.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+     <action path="/masters/deptToEmpAction"
+        type="ft.com.masters.DeptEmpAction"
+        name="deptEmpForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/deptEmp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/masters/atrDtl"
+        type="ft.com.masters.AtrDtlAction"
+        name="atrDtlForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/atrDtail.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/masters/atrDtlSub"
+        type="ft.com.masters.AtrDtlSubAction"
+        name="atrDtlSubForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/atrSubDtail.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    
+    <action path="/masters/xrtRte"
+        type="ft.com.masters.XrtRteAction"
+        name="xrtRteForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/xrtRte.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/masters/curDtl"
+        type="ft.com.masters.McurrenciesAction"
+        name="curForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/curDtl.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/masters/stkCategoryAccess"
+        type="ft.com.masters.StkCategoryAccessAction"
+        name="stkCtgForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/stkCtgMgr.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/masters/holidayAction"
+        type="ft.com.masters.HolidayAction"
+        name="holidayFrm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/masters/holidayPage.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/masters/subAtrDtlAction"
+        type="ft.com.masters.SubAtrDtlAction"
+        name="subAtrDtlFrm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/masters/subAtrDtail.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+      <action path="/masters/mszpcsdef"
+        type="ft.com.masters.MszPcsAction"
+        name="mszPcsform"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/masters/mszPcsdefination.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/pricing/PriceCalc"
+        type="ft.com.pricing.PriceCalcAction"
+        name="PriceCalc"
+        parameter="parameter"
+        scope="session">
+         <forward name="setup" path="/pricing/priceCalc.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/pricing/excelutilty"
+        type="ft.com.pricing.ExcelUtilityAction"
+        name="excelutilityfrm"
+        parameter="method"
+        scope="session">
+         <forward name="load" path="/pricing/priceExcelUtility.jsp" />
+        <forward name="excelutility" path="/pricing/priceExcelUtility.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+       <action path="/pricing/rePrice"
+        type="ft.com.pricing.RepriceAction"
+        name="repricefrm"
+        parameter="parameter"
+        scope="request">
+         <forward name="setup" path="/pricing/rePriceing.jsp" />
+         <forward name="loadPrc" path="/pricing/reprcStatus.jsp" />
+          <forward name="loadRT" path="/pricing/priceReport.jsp" />
+                  <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/pricing/transferMkt"
+        type="ft.com.pricing.TransferToMkt"
+        name="transferToMktForm"
+        parameter="method"
+        scope="request">
+         <forward name="load" path="/pricing/transferToMkt.jsp" />
+         <forward name="loadPrc" path="/pricing/reprcStatus.jsp" />
+          <forward name="IssueReport"  redirect="false"  path="/Inward/assortlabreport.do?method=load" />
+           <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/pricing/ajaxPrcAction"
+        type="ft.com.pricing.AjaxPrcAction"
+        name="transferToMktForm"
+        parameter="method"/>
+        
+         <action path="/masters/loyaltyctg"
+        type="ft.com.masters.LoyaltyCtgAction"
+        name="loyaltyCtgForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/loyaltyctg.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+     <action path="/pricing/priceChanges"
+        type="ft.com.pricing.PriceChangesAction"
+        name="priceChangesForm"
+        parameter="method"
+        scope="request">
+         <forward name="load" path="/pricing/priceChanges.jsp" />
+         <forward name="loadAPP" path="/pricing/approvalForpriceChng.jsp" />
+         <forward name="priceDtl" path="/pricing/approvalDtl.jsp"/>
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/masters/loyaltySlabs"
+        type="ft.com.masters.LoyaltySlabsAction"
+        name="loyaltySlabsForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/loyaltySlabs.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/masters/sizedef"
+        type="ft.com.masters.SizeDefAction"
+        name="sizeDefForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/sizeDefination.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/masters/mixsizedef"
+        type="ft.com.masters.MixSizeDefination"
+        name="sizeDefForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/mixSizeDefination.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    
+        <action path="/masters/pricingsizedef"
+        type="ft.com.masters.PricingSizeDefAction"
+        name="pricingsizeDefForm"
+        parameter="method"
+        scope="request">
+        <forward name="view" path="/masters/pricingSizeDef.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/masters/subsizedef"
+type="ft.com.masters.SubSizeDefAction"
+name="SubSizeDefForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/subsizeDefination.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/masters/stockstt"
+type="ft.com.masters.StockSttAction"
+name="StockSttForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/stockstt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/masters/detailinfo"
+type="ft.com.masters.ClientInfoAction"
+name="ClientInfoForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/cdetails.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/masters/rapusrinfo"
+type="ft.com.masters.RapUsrInfoAction"
+name="RapUsrInfoForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/rapusrinfo.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+   <action path="/pricing/proposeToLive" type="ft.com.pricing.ProposToLiveAction"
+        name="proposToLiveForm"
+        parameter="method"
+        scope="session">
+    <forward name="load" path="/pricing/proposToLive.jsp" />
+  <forward name="loadSucc" path="/contact/mailsuccess.jsp" />
+  <forward name="comparison" path="/pricing/proposLiveComparison.jsp" />
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+   </action>
+    <action path="/pricing/rapNet" type="ft.com.pricing.RapnetAction"
+        name="rapNetForm"
+        parameter="method"
+        scope="request">
+     <forward name="load" path="/pricing/rapNet.jsp" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+   </action>
+   <action path="/masters/mpair"
+           type="ft.com.masters.MpairMasterAction"
+           name="MpairMasterForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/mpairMaster.jsp" />
+                  <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+          </action>
+
+      <action path="/masters/mpairproperty"
+              type="ft.com.masters.MpairPropertyAction"
+              name="MpairPropertyForm"
+               parameter="method"
+              scope="request">
+      <forward name="view" path="/masters/MpairProperty.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+<action path="/masters/reportmodule"
+type="ft.com.masters.ReportModuleAction"
+name="ReportModuleForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/reportModule.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+<action path="/masters/moduleproperty"
+type="ft.com.masters.ModulePropertyAction"
+name="ModulePropertyForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/moduleProperty.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+<action path="/pricing/mpchange"
+type="ft.com.pricing.ManualPChangeAction"
+name="ManualPChangeForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/pricing/mpChange.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+<action path="/pricing/StockPrpUpd"
+        type="ft.com.marketing.StockPrpUpdAction"
+        name="stockPrpUpdForm"
+        parameter="method"
+        scope="request">
+   
+      <forward name="loadBulkPrp" path="/marketing/stockBulkUpd.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+  </action>
+  
+  <action path="/dynamicProperty"
+type="ft.com.DynamicPropertyAction"
+name="dynamicPropertyForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/DynamicProperty.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/masters/byrSetup"
+        type="ft.com.masters.ByrSetupAction"
+        name="byrForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/masters/byrSetup.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/masters/utility"
+type="ft.com.masters.UtilityActionNew"
+name="atrDtlForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/masters/utility.jsp" />
+<forward name="loadrpt" path="/masters/utilityrpt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/masters/charges"
+type="ft.com.masters.ChargesAction"
+name="chargesForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/masters/charges.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>        
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+    <action path="/masters/mruleMst"
+       type="ft.com.masters.MruleAction"
+       name="mruleForm"
+       parameter="method"
+       scope="request">
+       <forward name="view" path="/masters/mrule.jsp" />
+       <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+       <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+       <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+   </action>
+     <action path="/masters/ruleDtle"
+       type="ft.com.masters.RuleDtlAction"
+       name="ruleDtlForm"
+       parameter="method"
+       scope="request">
+       <forward name="view" path="/masters/ruleDtl.jsp" />
+   </action>
+<action path="/masters/activity"
+          type="ft.com.masters.ActivityAction"
+          name="activityForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/activity.jsp" />
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+          <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       </action>
+       <action path="/masters/aginward"
+          type="ft.com.masters.InwardAction"
+          name="aginwardForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/inward.jsp" />
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+          <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       </action>
+       <action path="/masters/adjustment"
+       type="ft.com.masters.AdjustmntAction"
+       name="adjustmntForm"
+       parameter="method"
+       scope="request">
+       <forward name="adjustmnt" path="/masters/adjustment.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+       <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+   </action>
+       <action path="/masters/prcemp"
+          type="ft.com.masters.PrcEmpAction"
+          name="prcEmpForm"
+           parameter="method"
+           scope="request">
+          <forward name="view" path="/masters/prcEmp.jsp" />
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       </action>
+        <action path="/masters/happyhours"
+          type="ft.com.masters.HappyHoursAction"
+          name="happyHoursForm"
+           parameter="method"
+           scope="request">
+          <forward name="load" path="/masters/happyHours.jsp" />
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       </action>
+               <action path="/masters/match"
+          type="ft.com.masters.MatchPairAction"
+          name="matchPairForm"
+           parameter="method"
+           scope="request">
+          <forward name="load" path="/masters/matchpair.jsp" />
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       </action>
+    <action path="/pricing/ajaxPrcAction"
+        type="ft.com.pricing.AjaxPrcAction"
+        name="priceChangesForm"
+        parameter="method"/>
+ <action path="/pricing/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+ <action path="/masters/ajaxRptAction" parameter="method" name="reportForm" scope="session" type="ft.com.report.AjaxRptAction" />
+ <action path="/masters/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+
+
+</action-mappings> 
+   
+   <message-resources parameter="jflex.ApplicationResources"/>
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+     <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  </plug-in>
+</struts-config>

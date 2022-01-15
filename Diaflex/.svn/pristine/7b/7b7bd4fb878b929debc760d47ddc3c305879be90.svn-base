@@ -1,0 +1,75 @@
+.fltrow{ /* filter grid row appearance */
+	height:20px;
+	background-color:#f4f4f4;
+        
+}
+.btnflt{ /* button appearance */
+	font-size:11px;
+	margin:0 2px 0 2px; padding:0 1px 0 1px;
+	text-decoration:none; color: #fff;
+	background-color:#666;
+	vertical-align:middle;
+}
+.flt{ /* filter (input) appearance */
+	 border:1px solid  #e6a16d; /*1px rgb(99,99,99) solid ;*/
+     font-family: Calibri, Arial, Helvetica, sans-serif;
+     font-size: 13px;
+     height:20px;
+}
+select.flt{ /* select filter */
+	 border:1px solid  #e6a16d; /*1px rgb(99,99,99) solid ;*/
+     font-family: Calibri, Arial, Helvetica, sans-serif;
+     font-size: 13px;
+     height:20px;
+}
+.flt_s{ /* small filter (input) appearance */
+	 border:1px solid  #e6a16d; /*1px rgb(99,99,99) solid ;*/
+     font-family: Calibri, Arial, Helvetica, sans-serif;
+     font-size: 14px;
+     height:20px;
+}
+.inf{ /* div containing left, middle and right divs */
+	clear:both; width:auto; height:25px; 
+	background:#f4f4f4; font-size:11px; 
+	margin:0; padding:1px 3px 1px 3px; 
+	border:1px solid #ccc;
+}
+.ldiv{ /* left div */
+	float:left; position:inherit; 
+        padding:1px 3px 1px 3px; 
+}
+
+.mdiv{ 
+	float:left;  position:inherit; text-align:center;
+	
+        padding:1px 3px 1px 3px; 
+}
+.rdiv{ /* right div */
+	float:left; position:inherit; text-align:right; 
+        padding:1px 3px 1px 3px; 
+}
+.loader{ /* loader appearance */
+	position:absolute; padding: 15px 0 15px 0;
+	margin-top:40px; width:200px; left:40%; 
+	z-index:1000; font-size:14px; font-weight:bold;
+	border:1px solid #666; background:#f4f4f4; 
+	text-align:center; vertical-align:middle;
+}
+select.pgSlc{  border:1px solid  #e6a16d; /*1px rgb(99,99,99) solid ;*/
+     font-family: Calibri, Arial, Helvetica, sans-serif;
+     font-size: 14px;
+     height:20px; }/*paging drop-down list*/
+input.pgInp{ /*paging buttons (Next/Previous)*/
+	font-size:10px; font-weight:bold; vertical-align:middle; 
+	padding:1px 1px 2px 1px; background-color:#ccc; 
+	border:1px outset #666; margin:1px;
+}
+span.nbpg{ padding:0 5px 0 0; }/*paging nb pages*/
+div.inf a{ color:#CC0000; }/*link appearence in .inf div*/
+div.inf a:hover{ text-decoration:none; }/*link appearence in .inf div*/
+.tot{ font-weight:bold; }/*rows counter*/
+.even{ background-color:#fff; }/*row bg alternating color*/
+.odd{ background-color:#f4f4f4; }/*row bg alternating color*/
+select.rspg{ width:50px; margin:1px 5px 0 5px; vertical-align:middle; }/*results per page select*/
+
+

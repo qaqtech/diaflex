@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="mixAssortIssueForm" type="ft.com.mixre.MixAssortIssueForm" />
+<form-bean name="mixInwardReportForm" type="ft.com.mixakt.MixInwardReportForm" />
+<form-bean name="lotReportForm" type="ft.com.mixre.LotReportForm" />
+</form-beans>
+<action-mappings>
+   <action path="/mixre/mixAssortIssue" parameter="method"
+             type="ft.com.mixre.MixAssortIssue" name="mixAssortIssueForm" scope="session">
+        <forward name="load" path="/mixre/mixAssortIssue.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+
+ <action path="/mixre/mixTransaction" parameter="method"
+     type="ft.com.mixre.MixTransaction" name="mixTransactionForm" scope="session">
+        <forward name="load" path="/mixre/mixTransaction.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+
+<action path="/mixre/mixInwardAction" parameter="method"
+type="ft.com.mixre.MixInwardReportAction" name="mixInwardReportForm" scope="session">
+       <forward name="load" path="/mixre/MixInwardReport.jsp" />
+       <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+       <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+   <action path="/mixre/lotReport" parameter="method"
+     type="ft.com.mixre.LotReportAction" name="lotReportForm" scope="request">
+        <forward name="loadlot" path="/mixre/lotReport.jsp" />
+        <forward name="loadProcesslot" path="/mixre/lotProcessRpt.jsp" />
+        <forward name="loadRghProcesslot" path="/mixre/lotRghProcessRpt.jsp" />
+        <forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+<action path="/mix/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+<action path="/mixre/ajaxAssortAction" parameter="method" name="searchForm" scope="session" type="ft.com.assort.AjaxAssortAction" />
+</action-mappings>
+</struts-config>

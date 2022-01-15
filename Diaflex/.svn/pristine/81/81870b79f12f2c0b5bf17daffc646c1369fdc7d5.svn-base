@@ -1,0 +1,644 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<!DOCTYPE web-app PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+    "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+ 
+    <filter>
+    <filter-name>ResponseOverrideFilter</filter-name> 
+    <filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class> 
+</filter>
+    
+    <filter-mapping>
+    <filter-name>ResponseOverrideFilter</filter-name> 
+    <url-pattern>*.do</url-pattern>
+</filter-mapping>
+<filter-mapping> 
+    <filter-name>ResponseOverrideFilter</filter-name> 
+    <url-pattern>*.jsp</url-pattern>
+</filter-mapping>
+    <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml,/WEB-INF/struts-configMarketing.xml,
+                   /WEB-INF/struts-configReport.xml,
+                   /WEB-INF/struts-contacts.xml,
+                   /WEB-INF/struts-configInward.xml,
+                   /WEB-INF/struts-configRole.xml,
+                   /WEB-INF/struts-configFileUpload.xml,
+                   /WEB-INF/struts-configAssort.xml,
+                   /WEB-INF/struts-configAssortHK.xml,
+                   /WEB-INF/struts-configLab.xml,
+                   /WEB-INF/struts-configPri.xml,
+                   /WEB-INF/struts-configWebsite.xml,
+                   /WEB-INF/struts-configMangoReport.xml,
+                   /WEB-INF/struts-configRepair.xml,
+                   /WEB-INF/struts-configDashboard.xml,
+                   /WEB-INF/struts-configRfid.xml,
+                   /WEB-INF/struts-configMixAkt.xml,
+                   /WEB-INF/struts-configPur.xml, /WEB-INF/struts-configBox.xml,
+                                      /WEB-INF/struts-configMix.xml,/WEB-INF/struts-configMixre.xml,/WEB-INF/struts-configRoughPur.xml,/WEB-INF/struts-configMixLakhi.xml,/WEB-INF/struts-configReceipt.xml,/WEB-INF/struts-configJasperReport.xml,
+                   /WEB-INF/struts-configOrder.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+    <servlet>
+        <servlet-name>StickyCaptcha</servlet-name>
+        <servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>
+        <init-param>
+            <param-name>width</param-name>
+            <param-value>250</param-value>
+        </init-param>
+        <init-param>
+            <param-name>height</param-name>
+            <param-value>75</param-value>
+        </init-param>
+    </servlet>
+ <context-param>
+        <param-name>SMTPHost</param-name>
+        <param-value>mail.faunatechnologies.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>SMTPUsr</param-name>
+        <param-value>noreply-faunatechnologies</param-value>
+    </context-param>
+    <context-param>
+        <param-name>SMTPPwd</param-name>
+        <param-value>fauna405</param-value>
+    </context-param>
+    <context-param>
+        <param-name>SMTPPort</param-name>
+        <param-value>25</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>
+            LabComparisionExcel
+        </servlet-name>
+        <servlet-class>
+            ft.com.LabComparisionExcel
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>
+            SavePriceGridPRO
+        </servlet-name>
+        <servlet-class>
+            ft.com.LabComparisionExcel
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>
+            GenericExcelUtil
+        </servlet-name>
+        <servlet-class>
+            ft.com.GenericExcelUtil
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>
+            JBSavePriceGrid
+        </servlet-name>
+        <servlet-class>
+            ft.com.GenericExcelUtil
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>
+            WebUserMail
+        </servlet-name>
+        <servlet-class>
+            ft.com.WebUserMail
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>
+            RWWebServiceTest
+        </servlet-name>
+        <servlet-class>
+            ft.com.RWWebServiceTest
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StickyCaptcha</servlet-name>
+    <url-pattern>/stickyImg</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+        <servlet-name>SaveGrpDefn</servlet-name>
+        <url-pattern>/savegrpdefn</url-pattern>
+    </servlet-mapping>
+  <servlet-mapping>
+        <servlet-name>CopyPriceGrid</servlet-name>
+        <url-pattern>/copypricegrid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadFile</servlet-name>
+        <url-pattern>/loadfile</url-pattern>
+    </servlet-mapping>
+<servlet>
+<servlet-name>ICEditor</servlet-name>
+<servlet-class> ft.com.ICEServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ICEditor</servlet-name>
+<url-pattern>/servlet/ICEServlet</url-pattern>
+</servlet-mapping>
+    <servlet>
+        <servlet-name>SaveToXL</servlet-name>
+        <servlet-class>ft.com.SaveToXL</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetPrpLst</servlet-name>
+        <servlet-class>ft.com.GenericExcelUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SavePriceGrid</servlet-name>
+        <servlet-class>ft.com.GenericExcelUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CopyPriceGrid</servlet-name>
+        <servlet-class>ft.com.pricing.CopyPriceGrid</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveGrpDefn</servlet-name>
+        <servlet-class>ft.com.GenericExcelUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadFile</servlet-name>
+        <servlet-class>ft.com.pricing.LoadFile</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>SearchPriceGrid</servlet-name>
+        <servlet-class>ft.com.GenericExcelUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePriceGrid</servlet-name>
+        <servlet-class>ft.com.GenericExcelUtil</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>LabToXL</servlet-name>
+        <servlet-class>ft.com.LabToXL</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPrpLst</servlet-name>
+        <url-pattern>/getprplst</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SavePriceGrid</servlet-name>
+        <url-pattern>/savepricegrid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchPriceGrid</servlet-name>
+        <url-pattern>/searchpricegrid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePriceGrid</servlet-name>
+        <url-pattern>/updatepricegrid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LabToXL</servlet-name>
+        <url-pattern>/excel/labxl</url-pattern>
+    </servlet-mapping>
+  
+  <servlet-mapping>
+        <servlet-name>SaveToXL</servlet-name>
+        <url-pattern>/savetoxl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping> 
+        <servlet-name>
+            LabComparisionExcel
+        </servlet-name>
+        <url-pattern>
+            /labcomparisionexcel
+        </url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>
+            SavePriceGridPRO
+        </servlet-name>
+        <url-pattern>
+            /savepricegridpro
+        </url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>
+            GenericExcelUtil
+        </servlet-name>
+        <url-pattern>
+            /genericexcelutil
+        </url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>
+            JBSavePriceGrid
+        </servlet-name>
+        <url-pattern>
+            /jbsavepricegrid
+        </url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>
+            WebUserMail
+        </servlet-name>
+        <url-pattern>
+            /webusermail
+        </url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>
+            RWWebServiceTest
+        </servlet-name>
+        <url-pattern>
+            /rwwebservicetest
+        </url-pattern>
+    </servlet-mapping>
+    <session-config>
+    <session-timeout>45</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleDemo</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleROMIMP</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OraclePMANISH</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleSHMFG</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/Oracletrustar</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleKapuInc</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleDalumi</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleParas</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleXL</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleXLJF</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleSVK</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleKapu</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleKaputl</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleESDS</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+  
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/HKProd</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleHZRL</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/SHDMDProd</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleTNJTV</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/HKTEST</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+   <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleDINESH</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleXLMFG</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+        <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleSIMEON</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleLSJF</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleDAJJF</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleYASHITA</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleSJE</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleVDGEMS</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+         <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OraclePANDIAM</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleVANDAN</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleKRASA</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+          <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OraclePARAM</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+              <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleANKGEMS</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                  <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleAGAR</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                  <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleREMI</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleKBGEMS</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleHJAYESH</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleNGG</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleBASICDIAM</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleTNK</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+        <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleDRAGON</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+            <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleSBS</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleBHAVANA</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleRAMSON</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+         <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleCHORON</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+             <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleLakhi</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                 <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/Oraclesanghvis</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                 <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleTirupati</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                 <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleBagwati</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleCCNA</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleSHREE</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+         <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/Oraclecmahendra</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+             <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleReevan</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                 <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleRajgir</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                 <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/Oraclekavir</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                     <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/Oraclekumar</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+                <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleNJDIAM</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleRNEXPORT</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleGLOWSTAR</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleKEDIAM</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+          <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleGROWN</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+      <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OracleLKIFRS</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+    </resource-ref>
+    
+</web-app>

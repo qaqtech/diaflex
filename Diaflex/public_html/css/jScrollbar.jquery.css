@@ -1,0 +1,57 @@
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+/* 
+ * These selection declarations have to be separate
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+ * Also: hot pink!
+ */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+
+/* ========================================
+   Links
+   ======================================*/
+
+a:hover, a:active { outline: 0; }
+
+/*=========================================
+	Main Styles
+=========================================*/
+html {
+overflow-y: hidden;
+}
+
+#scrollbar-track {
+width: 5px;
+position: fixed;
+right: 0px;
+height: 100%;
+background: #ddd;
+}
+
+#scrollbar {
+width: 5px;
+position: fixed;
+right: 0px;
+background: #a3a3a3;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+#main {
+width:99%;
+padding: 0px;
+margin: 0px;
+border-left: 1px solid #dedede;
+border-right: 1px solid #dedede;
+}

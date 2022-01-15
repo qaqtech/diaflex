@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="mpurForm" type="ft.com.mpur.PurchaseForm"/>
+    <form-bean name="purchaseDtlForm" type="ft.com.mpur.PurchaseDtlForm"/>
+     <form-bean name="purchasePriceForm" type="ft.com.mpur.PurchasePricingForm"/>
+     <form-bean name="purchaseDmdForm" type="ft.com.mpur.PurchaseDmdForm"/>
+      <form-bean name="purchaseReturnForm" type="ft.com.mpur.PurchaseReturnForm"/>
+        <form-bean name="purchaseConfrimForm" type="ft.com.mpur.PurchaseConfrimFrom"/>
+</form-beans>
+<action-mappings>
+     
+      <action path="/purchase/purchaseAction"
+        type="ft.com.mpur.PurchaseAction"
+        name="mpurForm"
+        parameter="method"
+        scope="request">
+            <forward name="view" path="/purchase/purchasePage.jsp" />
+                    <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/purchase/purchaseDtlAction"
+        type="ft.com.mpur.PurchaseDtlAction"
+        name="purchaseDtlForm"
+        parameter="method"
+        scope="request">
+         <forward name="view" path="/purchase/purchaseDtl.jsp" />
+        <forward name="loadPrp" path="/purchase/purchasePrp.jsp" />
+        <forward name="loadbulkPrp" path="/purchase/purBulkUpd.jsp" />
+         <forward name="loadSplit" path="/purchase/purchaseSplit.jsp" />
+        <forward name="loadmixForm" path="/purchase/purchaseDtlMix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/purchase/purchaseDmdAction"
+        type="ft.com.mpur.PurchaseDmdAction"
+        name="purchaseDmdForm"
+        parameter="method"
+        scope="request">
+         <forward name="load" path="/purchase/purchaseDmd.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/purchase/purchasePriceAction"
+        type="ft.com.mpur.PurchasePricingAction"
+        name="purchasePriceForm"
+        parameter="method"
+        scope="session">
+        <forward name="PurPri" path="/purchase/purchasePri.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/purchase/purPrice"
+type="ft.com.mpur.PurchaseActPricingAction"
+name="purchasePriceForm"
+parameter="method"
+scope="session">
+<forward name="PurPri" path="/purchase/purchaseActPri.jsp" />
+<forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+  <action path="/purchase/purchaseReturnAction"
+        type="ft.com.mpur.PurchaseReturnAction"
+        name="purchaseReturnForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/purchase/purchaseRtn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/purchase/purConfrim"
+    type="ft.com.mpur.PurchaseConfrimAction"
+   name="purchaseConfrimForm"
+   parameter="method"
+   scope="session">
+   <forward name="load" path="/purchase/purchaseConfirm.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+   </action>
+    
+    <action path="/purchase/ajaxPrcAction"
+        type="ft.com.pricing.AjaxPrcAction"
+        name="purchaseDtlForm"
+        parameter="method"/>
+    </action-mappings>
+</struts-config>

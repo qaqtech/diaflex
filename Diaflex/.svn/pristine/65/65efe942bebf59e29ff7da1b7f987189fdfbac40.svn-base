@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="fileUploadForm" type="ft.com.fileupload.FileUploadForm"/>
+    <form-bean name="mlotUpdateForm" type="ft.com.fileupload.MlotUpdateFrom"/>
+   <form-bean name="fileUplodingForm" type="ft.com.fileupload.FileUploadingForm"/>
+</form-beans>
+ <action-mappings>
+    
+      <action path="/fileloaders/uploadFile"
+        type="ft.com.fileupload.FileUploadAction"
+        name="fileUploadForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/fileloaders/fileUpload.jsp" />
+        <forward name="loadRT" path="/fileloaders/fileLoadReport.jsp" />
+        <forward name="loadSTT" path="/fileloaders/fileUploadStt.jsp" />
+        <forward name="loadRP" path="/fileloaders/fileReceipt.jsp" />
+     
+        <forward name="inwardRP" path="/fileloaders/inwardReport.jsp" />
+        <forward name="loadDel" path="/fileloaders/deleteStock.jsp" />
+        <forward name="uploadStt" path="/fileloaders/fileUploadTm.jsp" />
+        <forward name="loadTemp" path="/fileloaders/fileUploadTemplate.jsp" />
+        <forward name="ErrorDtl" path="/fileloaders/fileError.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    
+    <action path="/fileloaders/loadFile"
+        type="ft.com.fileupload.FileUploadingAction"
+        name="fileUploadForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/fileloaders/fileLoading.jsp" />
+        
+    </action>
+    
+    
+    <action path="/fileloaders/mfgrecive"
+type="ft.com.fileupload.MfgReciveAction"
+name="fileUploadForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/fileloaders/mfgRecive.jsp" />
+<forward name="loadPKT" path="/fileloaders/mfgRecivePkt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/fileloaders/mlotUpdate"
+type="ft.com.fileupload.MlotUpdateAction"
+name="mlotUpdateForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/fileloaders/mlotUpdate.jsp" />
+<forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+<forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+<forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+<forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+  
+</action-mappings>
+</struts-config>

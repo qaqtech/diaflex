@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="orderDeliveryForm" type="ft.com.order.OrderDeliveryForm"/>
+    <form-bean name="orderOrderForm" type="ft.com.order.OpenOrderForm"/>
+    
+</form-beans>
+<action-mappings>
+     
+      <action path="/order/orderDeliveryAction"
+        type="ft.com.order.OrderDeliveryAction"
+        name="orderDeliveryForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/order/orderDelivery.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+          <action path="/order/openOrder"
+        type="ft.com.order.OpenOrderAction"
+        name="orderOrderForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/order/openorder.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+</action-mappings>
+</struts-config>

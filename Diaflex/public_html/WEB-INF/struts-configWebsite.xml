@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="WebRoleForm" type="ft.com.website.WebRoleForm"/>
+<form-bean name="WebMenuForm" type="ft.com.website.WebMenuForm"/>
+<form-bean name="WebMenuRoleForm" type="ft.com.website.WebMenuRoleForm"/>
+<form-bean name="BulkRoleForm" type="ft.com.website.BulkRoleForm"/>
+<form-bean name="adminShowDetailsForm" type="ft.com.website.AdminShowDetailsForm"/>
+<form-bean name="adminPopUpDataForm" type="ft.com.website.AdminPopUpDataForm"/>
+<form-bean name="adminHomepgScrollForm" type="ft.com.website.AdminHomepgScrollForm"/>
+<form-bean name="pendingRegForm" type="ft.com.website.PendingRegistrationForm"/>
+<form-bean name="userLoginInfoForm" type="ft.com.website.UserLoginInfoForm"/>
+<form-bean name="webLoginAndSrchDtlForm" type="ft.com.website.WebLoginAndSrchDtlForm"/>
+</form-beans>
+<action-mappings>
+<action path="/website/adminShowDetails" type="ft.com.website.AdminShowDetailsAction" parameter="method"
+name="adminShowDetailsForm" scope="request">
+<forward name="save" path="/website/adminShowDetails.jsp"/>
+<forward name="view" path="/website/adminShowDetails.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+ <action path="/website/webrole" type="ft.com.website.WebRoleAction"
+        name="WebRoleForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/website/webRoleDetails.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ <action path="/website/webmenu" type="ft.com.website.WebMenuAction"
+        name="WebMenuForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/website/webMenu.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+  <action path="/website/bulkrole" type="ft.com.website.BulkRoleAction"
+        name="BulkRoleForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/website/bulkRole.jsp"/>
+    <forward name="view" path="/website/bulkEmp.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+  <action path="/website/webmenurole" type="ft.com.website.WebMenuRoleAction"
+        name="WebMenuRoleForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/website/webMenuRoleDetail.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ 
+<action path="/website/AdminPopUpData" type="ft.com.website.AdminPopUpDataAction" parameter="method"
+name="adminPopUpDataForm">
+<forward name="store" path="/website/AdminPopUpData.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/website/AdminHomepgScroll" type="ft.com.website.AdminHomepgScrollAction" parameter="method"
+name="adminHomepgScrollForm">
+<forward name="view" path="/website/AdminHomepgScroll.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/website/AcceptRegistration" parameter="method"
+          type="ft.com.website.PendingRegistrationAction" name="pendingRegForm"
+          scope="session">
+  <forward name="linkExistingUser" path="/website/LinkExistingUsr.jsp"/>
+  <forward name="load" path="/website/AcceptRegistration.jsp"/>
+  <forward name="addUsrEmp" path="/website/addUsrsalprson.jsp"/>
+  <forward name="loadreject" path="/website/reject.jsp"/>
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  <action path="/website/userLoginInfo" parameter="method"
+          type="ft.com.website.UserLoginInfoAction" name="userLoginInfoForm"
+          scope="session">
+  <forward name="load" path="/website/webLoginReport.jsp"/>
+          <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+  <action path="/website/webLoginAndSrchDtl" parameter="method"
+          type="ft.com.website.WebLoginAndSrchDtl" name="webLoginAndSrchDtlForm"
+          scope="session">
+  <forward name="load" path="/website/webDtlsReport.jsp"/>
+  <forward name="loadSrchDtl" path="/website/webSrchDtlsReport.jsp"/>
+   <forward name="loadDtl" path="/website/webDtls.jsp"/>
+   <forward name="loadDeactivateDtl" path="/website/webDeactivateDtls.jsp"/>
+   <forward name="loadSrch" path="/website/webLoginSrchDtl.jsp"/>
+   <forward name="loadHistory" path="/website/srchHistory.jsp"/>
+   <forward name="loadActivity" path="/website/webActivity.jsp"/>
+           <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+
+  </action>
+  <action path="/website/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+  <action path="/website/ajaxRptAction" parameter="method" name="reportForm" scope="session" type="ft.com.report.AjaxRptAction" />
+</action-mappings>
+</struts-config>

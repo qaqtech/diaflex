@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+ <form-bean name="roleForm" type="ft.com.role.RoleForm"/>
+ <form-bean name="userForm" type="ft.com.role.UserForm"/>
+  <form-bean name="userRoleForm" type="ft.com.role.UserRoleForm"/>
+  <form-bean name="searchCustViewForm" type="ft.com.role.SearchCustViewForm"/>
+ </form-beans>
+ 
+ <action-mappings>
+ <action path="/role/roleDetail" type="ft.com.role.RoleAction"
+        name="roleForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/Role/roleDetails.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ 
+ <action path="/role/userDetail" type="ft.com.role.UserAction"
+        name="userForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/Role/userDetails.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+  <action path="/role/userRoleDetail" type="ft.com.role.UserRoleAction"
+        name="userRoleForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/Role/userRole.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ <action path="/role/srchCustViewAction" type="ft.com.role.SearchCustViewAction"
+       name="searchCustViewForm"
+       parameter="method"
+       scope="session">
+   <forward name="load" path="/Role/searchViewCust.jsp"/>
+           <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+       <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+ <action path="/role/menuRoleDetail" type="ft.com.role.MenuRoleAction"
+        name="roleForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/Role/menuRoleDetail.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ </action-mappings>
+</struts-config>
+

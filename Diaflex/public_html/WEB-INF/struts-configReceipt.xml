@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="receviceInvoiceForm" type="ft.com.receipt.ReceviceInvoiceForm"/>
+     <form-bean name="manualEntriesForm" type="ft.com.receipt.ManualEntriesForm"/>
+    <form-bean name="paymentTransForm" type="ft.com.receipt.PaymentTransForm"/>
+    <form-bean name="receiptTransReportForm" type="ft.com.receipt.ReceiptTransReportForm"/>
+    <form-bean name="masterEntriesForm" type="ft.com.receipt.MasterEntriesForm"/>
+</form-beans>
+<action-mappings>
+     
+      <action path="/receipt/receviceInvAction"
+        type="ft.com.receipt.ReceviceInvoiceAction"
+        name="receviceInvoiceForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/receipt/receviceInvoice.jsp" />
+         <forward name="loadRslt" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/receipt/manualEntriesAction"
+        type="ft.com.receipt.ManualEntriesAction"
+        name="manualEntriesForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/receipt/manualEntries.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/receipt/masterEntriesAction"
+        type="ft.com.receipt.MasterEntriesAction"
+        name="masterEntriesForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/receipt/masterEntries.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/receipt/paymentTransAction"
+        type="ft.com.receipt.PaymentTransAction"
+        name="paymentTransForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/receipt/paymentTrans.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/receipt/receiptTransReport"
+        type="ft.com.receipt.ReceiptTransReport"
+        name="receiptTransReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/receipt/receiptTranReport.jsp" />
+        <forward name="GlMstLoad" path="/receipt/GlMasterReport.jsp" />
+        <forward name="ReceiptTrans" path="/receipt/outstandingTrans.jsp" />
+        <forward name="Estimated" path="/receipt/estimatedDues.jsp" />
+        <forward name="TransDtl" path="/receipt/TransReport.jsp" />
+        <forward name="TransLoad" path="/receipt/TransReport.jsp" />
+        <forward name="TransDtlDteWise" path="/receipt/TransReportDteWise.jsp" />
+        <forward name="TransDtlDteLoad" path="/receipt/TransReportDteWise.jsp" />
+         <forward name="RefWiseLoad" path="/receipt/TransReportByRef.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    </action-mappings>
+</struts-config>

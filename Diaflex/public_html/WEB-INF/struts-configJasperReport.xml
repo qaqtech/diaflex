@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+    <form-beans>
+      <form-bean name="jasperReportForm" type="ft.com.jasperReport.JasperReportForm"/>
+     </form-beans>
+<action-mappings>
+ <action path="/jasperReport/stockTrackingAction"
+        type="ft.com.jasperReport.StockTackingReport"
+        name="jasperReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/jasperReport/stockTracking.jsp" />
+        <forward name="jasperRT" path="/jasperReport/stockTracking.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/jasperReport/salDeliveryAction"
+        type="ft.com.jasperReport.SaleDeliveryReport"
+        name="jasperReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/jasperReport/salDeliveryReport.jsp" />
+        <forward name="jasperRT" path="/jasperReport/jasperReportPrint.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+
+</action-mappings>
+</struts-config>

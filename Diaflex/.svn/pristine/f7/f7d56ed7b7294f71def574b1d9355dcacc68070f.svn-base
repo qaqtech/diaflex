@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="mixRtnForm" type="ft.com.mix.MixReturnForm" />
+<form-bean name="mixForm" type="ft.com.mix.MixForm" />
+<form-bean name="mixrtnMatrixForm" type="ft.com.mix.MixRtnMatrixForm" />
+<form-bean name="mixissForm" type="ft.com.mix.MixIssueForm" />
+<form-bean name="mixSizeClrform" type="ft.com.mix.MixSizeClrForm" />
+<form-bean name="mixClrMappingform" type="ft.com.mix.MixClrMappingForm" />
+<form-bean name="lotPricingForm" type="ft.com.mix.LotPricingForm" />
+<form-bean name="mixFnlIssForm" type="ft.com.mix.MixFinalIssueForm" />
+<form-bean name="mixFnlRtnForm" type="ft.com.mix.MixFinalRtnForm" />
+<form-bean name="trnMktMixForm" type="ft.com.mix.TransferToMKTMIXFrom" />
+<form-bean name="mixToMixForm" type="ft.com.mix.MixToMixForm" />
+<form-bean name="merge96upmixForm" type="ft.com.mix.Merge96UpMixForm" />
+<form-bean name="mergeMemoMixForm" type="ft.com.mix.MergeMemoMixForm" />
+<form-bean name="mixToSingleForm" type="ft.com.mix.MixToSingleForm" />
+<form-bean name="mixAdjForm" type="ft.com.mix.MixAdjForm" />
+<form-bean name="mixpendingForm" type="ft.com.mix.MixPendingFMemoForm" />
+<form-bean name="mixsaleDeliveryForm" type="ft.com.mix.MixSaleDeliveryForm"/>
+<form-bean name="singleToMixTrfForm" type="ft.com.mix.SingleToMixTrfForm"/>
+<form-bean name="mixGenericReportForm" type="ft.com.mix.MixGenericReportForm"/>
+<form-bean name="mixAssortRtnForm" type="ft.com.mix.MixAssortRtnForm"/>
+<form-bean name="transferPktForm" type="ft.com.mix.TransferPktForm"/>
+<form-bean name="mixMarketingTransferForm" type="ft.com.mix.MixMarketingTransferForm"/>
+<form-bean name="singleToMixForm" type="ft.com.mix.SingleToMixForm"/>
+<form-bean name="moveMixToSingleFrom" type="ft.com.mix.MoveMixToSingleFrom"/>
+<form-bean name="lotMergeForm" type="ft.com.mix.LotMergeForm"/>
+<form-bean name="mixManufacturingInwardform" type="ft.com.mix.MixManufacturingInwardform"/>
+<form-bean name="mixReturnCdForm" type="ft.com.mix.MixReturnCdForm"/>
+<form-bean name="mixDeliveryReturnForm" type="ft.com.mix.MixDeliveryReturnForm"/>
+</form-beans>
+<action-mappings>
+<action path="/mix/mixRtnAction" parameter="method"
+type="ft.com.mix.MixReturnAction" name="mixRtnForm" scope="session">
+<forward name="load" path="/mix/mixReturn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/mix/mixEditRtnAction" parameter="method"
+type="ft.com.mix.MixAssortEditReturnAction" name="assortReturnForm" scope="session">
+<forward name="load" path="/mix/mixAssortReturn.jsp" />
+ <forward name="loadStock" path="/assort/assortRtnUpd.jsp" />
+        <forward name="multiPrp" path="/assort/assortRtnMultiPrpUpd.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/assortReturn" parameter="method"
+type="ft.com.assort.AssortReturnAction" name="assortReturnForm" scope="session">
+<forward name="load" path="/mix/mixAssortReturn.jsp" />
+ <forward name="loadStock" path="/assort/assortRtnUpd.jsp" />
+        <forward name="multiPrp" path="/assort/assortRtnMultiPrpUpd.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixDeliveryRtn" parameter="method"
+type="ft.com.mix.MixDeliveryReturnAction" name="mixDeliveryReturnForm" scope="session">
+<forward name="load" path="/mix/mixDeliveryReturn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixRtnMatrixAction" parameter="method"
+type="ft.com.mix.MixRtnMatrixAction" name="mixrtnMatrixForm" scope="request">
+<forward name="load" path="/mix/mixRtnMatrix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixAction" parameter="method"
+type="ft.com.mix.MixAction" name="mixForm" scope="session">
+<forward name="load" path="/mix/mixRtn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixissAction" parameter="method"
+type="ft.com.mix.MixIssueAction" name="mixissForm" scope="session">
+<forward name="load" path="/mix/mixIssue.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixFnlissue" parameter="method"
+type="ft.com.mix.MixFinalIssue" name="mixFnlIssForm" scope="session">
+<forward name="load" path="/mix/mixFnlIssue.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixSizeClr" parameter="method"
+type="ft.com.mix.MixSizeClrAction" name="mixSizeClrform" scope="request">
+<forward name="load" path="/mix/mixSizeClrmatrix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixClrMapping" parameter="method"
+type="ft.com.mix.MixClrMapping" name="mixClrMappingform" scope="request">
+<forward name="load" path="/mix/mixClrMapping.jsp" />
+<forward name="view" path="/mix/mixClrMapping.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixClrMappingnew" parameter="method"
+type="ft.com.mix.MixClrMappingNew" name="mixClrMappingform" scope="request">
+<forward name="load" path="/mix/mixClrMappingNew.jsp" />
+<forward name="view" path="/mix/mixClrMappingNew.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/lotpri" parameter="method"
+type="ft.com.mix.LotPricingAction" name="lotPricingForm" scope="request" >
+<forward name="load" path="/mix/lotPricing.jsp" />
+<forward name="loaddept" path="/mix/lotPricingDept.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixFnlRtnAction" parameter="method"
+type="ft.com.mix.MixFinalRtnAction" name="mixFnlRtnForm" scope="session">
+<forward name="load" path="/mix/mixFnlReturn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/tranMktMixAction" parameter="method"
+type="ft.com.mix.TransferToMKTMIXAction" name="trnMktMixForm" scope="session">
+<forward name="load" path="/mix/transferToMktMix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixtomix" parameter="method"
+type="ft.com.mix.MixToMixAction" name="mixToMixForm" scope="request">
+<forward name="load" path="/mix/mixToMix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/merge96upmix" parameter="method"
+type="ft.com.mix.Merge96UpMixAction" name="merge96upmixForm" scope="request">
+<forward name="load" path="/mix/Merge96UpMix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mergeMemoMix" parameter="method"
+type="ft.com.mix.MergeMemoMixAction" name="mergeMemoMixForm" scope="request">
+<forward name="load" path="/mix/mergeMemoMix.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/lotMerge" parameter="method"
+type="ft.com.mix.LotMergeAction" name="lotMergeForm" scope="session">
+<forward name="load" path="/mix/lotMerge.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/mix/mixToSingle" parameter="method"
+type="ft.com.mix.MixToSingleAction" name="mixToSingleForm" scope="session">
+<forward name="load" path="/mix/mixToSingle.jsp" />
+<forward name="popup" path="/mix/mixToSinglePop.jsp" />
+<forward name="popup" path="/mix/mixToSinglePop.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/mix/singletomixtrf" parameter="method"
+type="ft.com.mix.SingleToMixTrfAction" name="singleToMixTrfForm" scope="request">
+<forward name="load" path="/mix/singleToMixTrf.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixadj"
+type="ft.com.mix.MixAdjAction"
+name="mixAdjForm"
+parameter="method"
+scope="request">
+<forward name="view" path="/mix/mixAdj.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/saleDelivery"
+        type="ft.com.mix.MixSaleDeliveryAction"
+        name="mixsaleDeliveryForm"
+        parameter="method"
+        scope="request">
+   
+       <forward name="load" path="/mix/mixsaleDelivery.jsp" />      
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+
+<action path="/mix/mixgenericReport"
+        type="ft.com.mix.MixGenericReportAction"
+        name="mixGenericReportForm"
+        parameter="method"
+        scope="request">
+       <forward name="load" path="/mix/mixgenericReport.jsp" />      
+       <forward name="srch" path="/mix/mixgenericReportView.jsp" />    
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+<action path="/mix/penfmemo"
+type="ft.com.mix.MixPendingFMemoAction"
+name="mixpendingForm"
+parameter="method"
+scope="session">
+         <forward name="load" path="/mix/mixpendingFMemo.jsp" />
+         <forward name="merge" path="/mix/mergeMemo.jsp" />
+         <forward name="pndPage" redirect="true" path="/mix/penfmemo.do?method=load" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixAssortRtnAction" parameter="method"
+type="ft.com.mix.MixAssortRtnAction" name="mixAssortRtnForm" scope="request">
+        <forward name="load" path="/mix/mixAssortRtn.jsp" />
+        <forward name="loadPop" path="/mix/mixAssortSplit.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/transferPktAction" parameter="method"
+type="ft.com.mix.TransferPktAction" name="transferPktForm" scope="session">
+        <forward name="load" path="/mix/TransferPkt.jsp" />
+        <forward name="loadPkt" path="/mix/creatNewTransPkt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/mixMktTransferAction" parameter="method"
+type="ft.com.mix.MixMarketingTransferAction" name="mixMarketingTransferForm" scope="session">
+        <forward name="load" path="/mix/mixMarketingTransfer.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/singleToMix" parameter="method"
+type="ft.com.mix.SingleToMixAction" name="singleToMixForm" scope="session">
+        <forward name="load" path="/mix/SingleToMix.jsp" />
+        <forward name="loadPkt" path="/mix/creatNewTransPkt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/moveMixToSingle" parameter="method"
+type="ft.com.mix.MoveMixToSingle" name="moveMixToSingle" scope="session">
+        <forward name="load" path="/mix/SingleToMix.jsp" />
+        <forward name="loadPkt" path="/mix/creatNewTransPkt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/mix/mixManufacturingAction" parameter="method"
+type="ft.com.mix.MixManufacturingInward" name="mixManufacturingInwardform" scope="session">
+        <forward name="load" path="/mix/mixManufacturing.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/assortCDReturn" parameter="method"
+type="ft.com.mix.MixReturnCdAction" name="mixReturnCdForm" scope="session">
+        <forward name="load" path="/mix/MixReturnCD.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mix/tranMixMktAction" parameter="method"
+type="ft.com.mix.TransferToMktMixGridAction" name="trnMktMixForm" scope="session">
+        <forward name="load" path="/mix/TransferMixMkt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+    <action path="/mix/ajaxAssortAction" parameter="method"    name="assortReturnForm"   type="ft.com.assort.AjaxAssortAction" />
+
+
+ <action path="/mix/mixAktAjaxAction" parameter="method"   type="ft.com.mixakt.MixAktAjaxAction" name="mixAssortReturnForm"/>
+
+<action path="/mix/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+</action-mappings>
+</struts-config>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <title>Diaflex : Login</title>
+    <link type="text/css" rel="stylesheet" href="css/bse.css"/>
+  </head>
+  <body>
+
+   
+    <form action="login.do?method=login" method="POST" onsubmit="return validateLoginForm(this);">
+    <div class="container">
+  <table class="grid1">
+    
+    <tr><td class="lft">Username</td>
+        <td class="lft">
+        <input type="text" size="30" name="dfusr" id="dfusr" maxlength="30"/></td>
+    </tr>
+    <tr><td class="lft">Password</td>
+        <td class="lft">
+            <input type="password" size="30" name="dfpwd" id="dfpwd" maxlength="30"/></td>
+    </tr>
+    <tr><td class="lft">Connect To</td>
+        <td class="lft">
+            
+             <input type="radio" name="dbTyp" id="dbTypLive"  value="HKProd" checked="checked"/>&nbsp;Live&nbsp;
+            <input type="radio" name="dbTyp" id="dbTypTest" value="HKProd"/>&nbsp;Test&nbsp;
+            
+        </td>
+    </tr>
+    
+    
+    <tr><td colspan="2" class="cntr">
+       <input type="submit" value="Login" />
+      
+    </td></tr>
+  </table>
+  </div>
+    
+    </form>
+  </body>
+</html>

@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="reportForm" type="ft.com.report.WebReportForm"/>
+<form-bean name="StockSummaryForm" type="ft.com.report.StockSummaryForm"/>
+<form-bean name="orclReportForm" type="ft.com.report.ReportForm"/>
+<form-bean name="transactionReportForm" type="ft.com.report.TransactionReportForm"/>
+<form-bean name="webUsrForm" type="ft.com.report.WebUsersForm"/>
+<form-bean name="assortLabPenForm" type="ft.com.report.AssortLabPendingForm"/>
+<form-bean name="mixStockSummary" type="ft.com.report.MixStockSummaryForm" />
+<form-bean name="issueReturnRptForm" type="ft.com.report.IssueReturnRptForm"/>
+<form-bean name="comparisonReportForm" type="ft.com.report.ComparisonReportForm"/>
+<form-bean name="dailyAllocationForm" type="ft.com.report.DailyAllocationForm"/>
+<form-bean name="dailyApproveReportForm" type="ft.com.report.DailyApproveReportForm"/>
+<form-bean name="dailyWebRequestForm" type="ft.com.report.DailyWebRequestForm"/>
+<form-bean name="dailymemoReportForm" type="ft.com.report.DailyMemoReportForm"/>
+<form-bean name="dailyPurReportForm" type="ft.com.report.DailyPurReportForm"/>
+<form-bean name="dailySalesReportForm" type="ft.com.report.DailySalesReportForm"/>
+<form-bean name="dailyDlvForm" type="ft.com.report.DailyDlvForm"/>
+<form-bean name="CombinationReportForm" type="ft.com.report.CombinationReportForm"/>
+<form-bean name="genericReportForm" type="ft.com.report.GenericReportForm"/>
+<form-bean name="groupWiseForm" type="ft.com.report.GroupWiseForm"/>
+<form-bean name="hkStockSummary" type="ft.com.report.HKStockSummaryForm" />
+ <form-bean name="monthlyCmpForm" type="ft.com.report.MonthlyCmpForm"/>
+ <form-bean name="commonForm" type="ft.com.report.CommonForm"/>
+  <form-bean name="memoDetailForm" type="ft.com.report.MemoDetailForm"/>
+  <form-bean name="dailyLabIssueReceiveForm" type="ft.com.report.DailyLabIssueReceiveForm" />
+<form-bean name="discoverReportForm" type="ft.com.report.DiscoverReportForm" />
+<form-bean name="weeklyReportForm" type="ft.com.report.WeeklyReportForm" />
+<form-bean name="weeklySaleReportForm" type="ft.com.report.WeeklySaleReportForm" />
+<form-bean name="mixSaleReportForm" type="ft.com.report.MixSaleReportForm" />
+<form-bean name="mixdlvReportForm" type="ft.com.report.MixdlvReportForm" />
+<form-bean name="dailyBranchDlvForm" type="ft.com.report.DailyBranchDlvForm"/>
+<form-bean name="empWiseForm" type="ft.com.report.EmpWiseForm"/>
+<form-bean name="priceHistoryForm" type="ft.com.report.PriceHistoryForm"/>
+<form-bean name="lightScreenForm" type="ft.com.report.LightScreenForm"/>
+<form-bean name="analysisReportForm" type="ft.com.report.AnalysisReportForm"/>
+<form-bean name="labStockReportForm" type="ft.com.report.LabStockReportForm"/>
+<form-bean name="dailyConsignmentReportForm" type="ft.com.report.DailyConsignmentReportForm"/>
+<form-bean name="discoverReportFormMG" type="ft.com.mangoReport.DiscoverReportForm" />
+
+</form-beans>
+<action-mappings>
+<action path="/report/reportAction"
+type="ft.com.report.WebReport"
+name="reportForm"
+parameter="method"
+scope="session">
+<forward name="loadPP" path="/report/ppReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/orclReportAction"
+type="ft.com.report.ReportAction"
+name="orclReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/reportPage.jsp" />
+<forward name="loadSL" path="/report/salependingreport.jsp" />
+<forward name="loadCS" path="/report/cspendingreport.jsp" />
+<forward name="loadDLV" path="/report/pendingReport.jsp" />
+<forward name="assLab" path="/report/assignLabpri.jsp" />
+<forward name="loadKaccha" path="/report/kacchaReport.jsp" />
+<forward name="loadWeekBuyer" path="/report/weekWiseBuying.jsp" />
+<forward name="memohk" path="/report/memoHk.jsp" />
+<forward name="piememo" path="/report/memopie.jsp" />
+<forward name="memohkPop" path="/report/memoHkPop.jsp" />
+<forward name="memohkcomp" path="/report/memocomp.jsp" />
+<forward name="repetcust" path="/report/repeatcust.jsp" />
+<forward name="loadmfgGrading" path="/report/mfgGrading.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+<forward name="loadrpt" path="/report/mlotrpt.jsp" />
+<forward name="assortDtl" path="/report/mlotAsortDtl.jsp" />
+<forward name="loadMemo" path="/report/memopendingreport.jsp" />
+<forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+<forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+ <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+<forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/stockSummary"
+type="ft.com.report.StockSummaryAction"
+name="StockSummaryForm"
+parameter="method"
+scope="session">
+<forward name="loadSttLab" path="/report/StatusLabReport.jsp" />
+<forward name="loadShSize" path="/report/ShapeSizeReport.jsp" />
+<forward name="loadColrPurty" path="/report/ColorPurityReport.jsp" />
+<forward name="loadPktDtl" path="/report/PacketDtlReport.jsp" />
+<forward name="loadGRPSttLab" path="/report/grpStatusLabReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/dailySalesReport"
+type="ft.com.report.DailySalesReportAction"
+name="dailySalesReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailySalesReport.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+<forward name="chnageInvNme" path="/report/changeInvoiceNme.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyMixSalesReport"
+type="ft.com.report.DailyMixSalesReportAction"
+name="dailySalesReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailySalesReport.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+<forward name="chnageInvNme" path="/report/changeInvoiceNme.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/lightscreen"
+type="ft.com.report.LightScreenAction"
+name="lightScreenForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/lightscreen.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyapproveReport"
+type="ft.com.report.DailyApproveReportAction"
+name="dailyApproveReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailyApprove.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyconsignmentReport"
+type="ft.com.report.DailyConsignmentReportAction"
+name="dailyConsignmentReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailyConsignment.jsp" />
+<forward name="createQtradeXL" redirect="false" path="/marketing/memoSale.do?method=createQtradeXL" />
+<forward name="createRuchiXL" redirect="false" path="/marketing/memoSale.do?method=createRuchiXL" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyMixDlvReport"
+type="ft.com.report.DailyMixDlvReportAction"
+name="dailyDlvForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailyDlvReport.jsp" />
+<forward name="createQtradeXL" redirect="false" path="/marketing/memoSale.do?method=createQtradeXL" />
+<forward name="createRuchiXL" redirect="false" path="/marketing/memoSale.do?method=createRuchiXL" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyDlvReport"
+type="ft.com.report.DailyDlvReportAction"
+name="dailyDlvForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailyDlvReport.jsp" />
+<forward name="createQtradeXL" redirect="false" path="/marketing/memoSale.do?method=createQtradeXL" />
+<forward name="createRuchiXL" redirect="false" path="/marketing/memoSale.do?method=createRuchiXL" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyBranchDlv"
+type="ft.com.report.DailyBranchDlvAction"
+name="dailyBranchDlvForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/dailyBranchDlv.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyAllocationAction"
+type="ft.com.report.DailyAllocationAction"
+name="dailyAllocationForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/dailyAllocation.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/combinationReport"
+type="ft.com.report.CombinationReportAction"
+name="CombinationReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/CombinationReport.jsp" />
+<forward name="viewRpt" path="/report/CombReportView.jsp" />
+<forward name="loadPktDtl" path="/report/CombPacketDtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/webUserReport"
+type="ft.com.report.WebUsersAction"
+name="webUsrForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/WebUsersLst.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/pepReport"
+type="ft.com.report.PEPReportAction"
+name="reportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/pepReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/report/assortLabPending"
+type="ft.com.report.AssortLabPending"
+name="assortLabPenForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/assortLabPending.jsp" />
+<forward name="loadPkt" path="/report/assortPktDtl.jsp" />
+<forward name="loadREP" path="/report/issuePending.jsp" />
+<forward name="labReport" path="/report/LabLocReport.jsp" />
+<forward name="view" redirect="false" path="/contact/massmail.do?method=mailListView" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/issueReturnRpt"
+type="ft.com.report.IssueReturnRptAction"
+name="issueReturnRptForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/issueRtnRpt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/genericReport"
+type="ft.com.report.GenericReportAction"
+name="genericReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/genericReport.jsp" />
+<forward name="srchR" path="/report/genericReportView.jsp" />
+<forward name="srchS" path="/report/genericReportshapeView.jsp" />
+<forward name="loadDtl" path="/report/genericPktDtl.jsp" />
+<forward name="summary" path="/report/genericSummaryDtl.jsp" />
+<forward name="colClrUp" path="/report/viewResult.jsp" />
+<forward name="graph" path="/report/pieChart.jsp" />
+<forward name="Weeksummary" path="/report/genericWeekSummaryDtl.jsp" />
+<forward name="summaryioWeek" path="/report/genericSummaryDtlweek.jsp" />
+<forward name="ageGen" path="/report/ageGenericReport.jsp" />
+<forward name="giasummary" path="/report/genericGiaSummary.jsp" />
+<forward name="fiftydownpt" path="/report/genericfiftydown.jsp" />
+<forward name="sizepurity" path="/report/genericSizePurity.jsp" />
+<forward name="memoshape" path="/report/genericMemoShape.jsp" />
+<forward name="shapeclarity" path="/report/shapeClarityBarGraph.jsp" />
+<forward name="pricegraphrpt" path="/report/genericPriceGraph.jsp" />
+<forward name="imageDtl" path="/report/genericImageDtl.jsp" />
+<forward name="srchRHitMap" path="/report/genericReportViewHitMap.jsp" />
+<forward name="loadstkoenclose" path="/report/genericStockOpenClose.jsp" />
+<forward name="loadstkoencloseshape" path="/report/genericopencloseshape.jsp" />
+<forward name="loadstkoencloseco" path="/report/genericopencloseco.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/genericReportMix"
+type="ft.com.report.GenericReportMixAction"
+name="genericReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/genericReportMix.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/comparisonReport"
+type="ft.com.report.ComparisonReportAction"
+name="comparisonReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/comparisonReport.jsp" />
+ <forward name="pktDtl" path="/stockResult.jsp" />
+ <forward name="grpWiseRpt" path="/report/irgrpWiseCmp.jsp" />
+</action>
+<action path="/report/dailyMemoReport"
+type="ft.com.report.DailyMemoReportAction"
+name="dailymemoReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailyMemoReport.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyWebRequestAction"
+type="ft.com.report.DailyWebRequestAction"
+name="dailyWebRequestForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/DailyWebRequest.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyPurReport"
+type="ft.com.report.DailyPurReportAction"
+name="dailyPurReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/dailypurchase.jsp" />
+</action>
+
+<action path="/report/groupAction"
+type="ft.com.report.GroupReportAction"
+name="groupWiseForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/groupReport.jsp" />
+<forward name="loadstt" path="/report/groupReport.jsp" />
+<forward name="loadShSz" path="/report/groupReport.jsp" />
+<forward name="loadCOPU" path="/report/groupReport.jsp" />
+<forward name="loadPktDtl" path="/report/groupReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/group"
+type="ft.com.report.GroupWiseAction"
+name="groupWiseForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/groupWiseReport.jsp" />
+<forward name="loadstt" path="/report/sttWiseReport.jsp" />
+<forward name="loadShSz" path="/report/shapeReport.jsp" />
+<forward name="loadCOPU" path="/report/colorReport.jsp" />
+<forward name="loadPktDtl" path="/report/PacketDtlReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/groupGrp"
+type="ft.com.report.GroupWiseActionGrpWise"
+name="groupWiseForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/groupWiseReporGrp.jsp" />
+<forward name="loadstt" path="/report/sttWiseReportGrp.jsp" />
+<forward name="loadShSz" path="/report/shapeReportGrp.jsp" />
+<forward name="loadCOPU" path="/report/colorReportGrp.jsp" />
+<forward name="loadPktDtl" path="/report/PacketDtlReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/mixStockSummary"
+type="ft.com.report.MixStockSummaryAction"
+name="mixStockSummary"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/mixStockSummary.jsp" />
+<forward name="loadPktDtl" path="/report/mixPacketDtl.jsp" />
+<forward name="loaSZCLR" path="/report/mixSizeClr.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/hkStockSummary"
+type="ft.com.report.HKStockSummaryAction"
+name="hkStockSummary"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/ageLabReport.jsp" />
+<forward name="loadRt" path="/report/hkStockSummary.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/monthCmp"
+type="ft.com.report.MonthlyCmpAction"
+name="monthlyCmpForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/monthCmp.jsp" />
+<forward name="grpWiseRpt" path="/report/grpWiseMonthCmp.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+ <action path="/report/orclRptAction"
+type="ft.com.report.RptAction"
+name="orclReportForm"
+parameter="method"
+scope="session">
+<forward name="fetchSaleDisReportByr" path="/report/saleDisReportByr.jsp" />
+<forward name="fetchHsBsAccessLog" path="/report/hsBsAccessLog.jsp" />
+<forward name="fetchHsBsAccessDtl" path="/report/hhBpsAccessDtl.jsp" />
+<forward name="locsmmy" path="/report/locationsummy.jsp" />
+<forward name="pndsummy" path="/report/pendingsmmyReport.jsp" />
+<forward name="loadcust" path="/report/repeatCustList.jsp" />
+<forward name="fetchakhi" path="/report/akhani.jsp" />
+<forward name="fetchakhiSH" path="/report/akhaniSH.jsp" />
+<forward name="loadReports" path="/report/jfexreports.jsp" />
+<forward name="loadWeekMonth" path="/report/weeklyMonthlyReport.jsp" />
+<forward name="mixsalerpt" path="/report/mixsalerpt.jsp" />
+<forward name="singlesalerpt" path="/report/singlesalerpt.jsp" />
+<forward name="loaddailymixtrf" path="/report/dailymixtrf.jsp" />
+<forward name="loadrtn" path="/report/saleDlvRtn.jsp" />
+<forward name="loadbox" path="/report/boxtransaction.jsp" />
+<forward name="loadmonthly" path="/report/monthlyLst.jsp" />
+<forward name="loadweekly" path="/report/weeklyLst.jsp" />
+<forward name="makablerpt" path="/report/mfgmakablerpt.jsp" />
+<forward name="loadlot" path="/report/lotrpt.jsp" />
+<forward name="loadfactoryrun" path="/report/factoryrunstkrpt.jsp" />
+<forward name="loaddlvsummaryrpt" path="/report/dlvsummaryrpt.jsp" />
+<forward name="loadSaleDisReport" path="/report/saleDisReport.jsp" />
+<forward name="loadSaleBasePrc" path="/report/saleBasePrc.jsp" />
+<forward name="hitratio" path="/report/hitratio.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+<forward name="loadwebservice" path="/report/webServiceInt.jsp" />
+<forward name="loadmixprofit" path="/report/mixprofit.jsp" />
+<forward name="loadmixprofitpkt" path="/report/mixprofitpkt.jsp" />
+<forward name="loadPriceDiff" path="/report/PriceZeroAndDiffRpt.jsp" />
+<forward name="loadfeedbackRpt" path="/report/feedbackRpt.jsp" />
+<forward name="priceReduction" path="/report/priceReduction.jsp" />
+<forward name="loadsaletermswise" path="/report/saletermswise.jsp" />
+<forward name="loadWEKLST" path="/report/weeklyExcel.jsp" />
+<forward name="webAlcReport" path="/report/weballocation.jsp" />
+<forward name="ppAlcReport" path="/report/ppallocation.jsp" />
+<forward name="opStk" path="/report/opStk.jsp" />
+<forward name="loadRecptDt" path="/report/recptDt.jsp" />
+<forward name="loadCustomScreen" path="/report/customScreen.jsp" />
+<forward name="loadSearch" path="/report/search.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        <forward name="loadwebservice" path="/report/webServiceInt.jsp" />
+</action>
+
+<action path="/report/empWiseReport"
+type="ft.com.report.EmpWiseReport"
+name="empWiseForm"
+parameter="method"
+scope="session">
+<forward name="empWiseReport" path="/report/empwiseRpt.jsp" />
+<forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+<forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+<forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+<forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+<forward name="loadwebservice" path="/report/webServiceInt.jsp" />
+</action>
+
+ <action path="/report/rptfmt"
+type="ft.com.report.ReportFormatAction"
+name="orclReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/rptFormat.jsp" />
+<forward name="shapeclarity" path="/report/rptshclrBarGraph.jsp" />
+<forward name="sizepurity" path="/report/rptsizepurity.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+ <action path="/report/ifrsaction"
+type="ft.com.report.IfrsAction"
+name="orclReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/ifrs.jsp" />
+<forward name="load2Level" path="/report/ifrs2Level.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/ifrsactionhk"
+type="ft.com.report.IfrsActionHk"
+name="orclReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/ifrsHk.jsp" />
+<forward name="load2Level" path="/report/ifrs2Level.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+ <action path="/report/ifrsactionkg"
+type="ft.com.report.IfrsActionKg"
+name="orclReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/ifrsKg.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+ <action path="/report/ifrsactionag"
+type="ft.com.report.IfrsActionAg"
+name="orclReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/ifrsAg.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+ <action path="/report/ifrsactionagNew"
+type="ft.com.report.IfrsActionAgNew"
+name="orclReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/ifrsAgNew.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/common"
+type="ft.com.report.CommonAction"
+name="commonForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/changePassword.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/report/memoDtl"
+type="ft.com.report.MemoDetailAction"
+name="memoDetailForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/memoDetail.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/dailyLabIssueReceive"
+type="ft.com.report.DailyLabIssueReceive"
+name="dailyLabIssueReceiveForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/dailyLabIssueReceive.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+ <action path="/report/discover"
+        type="ft.com.report.DiscoverAction"
+        name="discoverReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/discoverReport.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/report/discoverReport"
+        type="ft.com.mangoReport.DiscoverAction"
+        name="discoverReportFormMG"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/mangoReport/Discover.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/report/mixdiscover"
+        type="ft.com.report.MixDiscoverReportAction"
+        name="discoverReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/mixDiscoverReport.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/report/weeklyStockReport"
+        type="ft.com.report.WeeklyStockReportAction"
+        name="weeklyReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/weeklyStockReport.jsp" />
+      
+        <forward name="pktDtl" path="/stockResult.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    <action path="/report/weeklySaleReport"
+        type="ft.com.report.WeeklySaleReportAction"
+        name="weeklySaleReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/weeklySaleReport.jsp" />
+        <forward name="pktDtl" path="/stockResult.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+        <action path="/report/weeklyReport"
+        type="ft.com.report.WeeklyReportAction"
+        name="weeklyReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/weeklyReport.jsp" />
+         <forward name="ShapeWise" path="/report/weeklyShapeWiseRp.jsp" />
+        <forward name="pktDtl" path="/stockResult.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/report/mixSaleReport"
+        type="ft.com.report.MixSaleReportAction"
+        name="mixSaleReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/mixSaleReport.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/report/mixDlvReport"
+        type="ft.com.report.MixdlvReportAction"
+        name="mixdlvReportForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/report/MixdlvReport.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/report/priceHistory"
+        type="ft.com.report.PriceHistoryAction"
+        name="priceHistoryForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/report/priceHistory.jsp" />
+     </action>
+      <action path="/report/dailySaleReportCD"
+        type="ft.com.report.DailySaleReportCD"
+        name="dailySalesReportForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/report/dailySaleReportCd.jsp" />
+     </action>
+    <action path="/report/assortValueReport"
+        type="ft.com.report.AssortValueReport"
+        name="assortLabPenForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/assortValueReport.jsp" />
+        <forward name="loadBoxId" path="/report/assortValueBoxID.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+
+<action path="/report/analysisReport"
+type="ft.com.report.AnalysisReportAction"
+name="analysisReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/report/AnalysisSrchPage.jsp" />
+<forward name="srchR" path="/report/genericReportView.jsp" />
+<forward name="srchS" path="/report/genericReportshapeView.jsp" />
+<forward name="loadDtl" path="/report/genericPktDtl.jsp" />
+<forward name="summary" path="/report/genericSummaryDtl.jsp" />
+<forward name="colClrUp" path="/report/viewResult.jsp" />
+<forward name="graph" path="/report/pieChart.jsp" />
+<forward name="Weeksummary" path="/report/genericWeekSummaryDtl.jsp" />
+<forward name="summaryioWeek" path="/report/genericSummaryDtlweek.jsp" />
+<forward name="ageGen" path="/report/ageGenericReport.jsp" />
+<forward name="giasummary" path="/report/genericGiaSummary.jsp" />
+<forward name="fiftydownpt" path="/report/genericfiftydown.jsp" />
+<forward name="sizepurity" path="/report/genericSizePurity.jsp" />
+<forward name="memoshape" path="/report/genericMemoShape.jsp" />
+<forward name="shapeclarity" path="/report/shapeClarityBarGraph.jsp" />
+<forward name="pricegraphrpt" path="/report/genericPriceGraph.jsp" />
+<forward name="imageDtl" path="/report/genericImageDtl.jsp" />
+<forward name="srchRHitMap" path="/report/genericReportViewHitMap.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/report/labStockReport"
+type="ft.com.report.LabStockReport"
+name="labStockReportForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/report/labStockReport.jsp" />
+<forward name="loadPkt" path="/report/labPacketDtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/report/transactionReport"
+        type="ft.com.report.TransactionReportAction"
+        name="transactionReportForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/report/transactionReport.jsp" />
+        <forward name="loadResult" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+
+<action path="/report/ajaxAction"
+type="ft.com.AjaxAction" />
+<action path="/report/purPrice" parameter="method" name="reportForm" scope="session" type="ft.com.mpur.PurchaseActPricingAction" />
+<action path="/report/ajaxRptAction" parameter="method" name="reportForm" scope="session" type="ft.com.report.AjaxRptAction" />
+<action path="/report/ajaxChartAction" parameter="method" name="reportForm" scope="session" type="ft.com.report.AjaxChartAction" />
+<action path="/report/ajaxAssortAction" parameter="method" name="comparisonReportForm" scope="session" type="ft.com.assort.AjaxAssortAction" />
+<action path="/report/ajaxsrchAction" parameter="method" name="reportForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+</action-mappings>
+</struts-config>

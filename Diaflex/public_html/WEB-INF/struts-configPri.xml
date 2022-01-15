@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+  <form-beans>
+    <form-bean name="priGrpForm" type="ft.com.pri.PriGrpForm"/>
+      <form-bean name="priGrpPrpForm" type="ft.com.pri.PriGrpPrpForm"/>
+       <form-bean name="PriceGPForm" type="ft.com.pri.PriceGPForm"/>
+       <form-bean name="PriceGPDefForm" type="ft.com.pri.PriceGPDefForm"/>
+       <form-bean name="PriceGPPrpDefForm" type="ft.com.pri.PriceGPPrpDefForm"/>
+       <form-bean name="priceGPMatrixForm" type="ft.com.pri.PriceGPMatrixForm"/>
+       <form-bean name="priceCalcForm" type="ft.com.pri.PriceCalcForm"/>
+       <form-bean name="priceCalcMultiForm" type="ft.com.pri.PriceCalcMultiForm"/>
+       <form-bean name="priceRtnForm" type="ft.com.pri.PriceRtnForm"/>
+       <form-bean name="priceDtlMatrixForm" type="ft.com.pri.PriceDtlMatrixForm"/>
+       <form-bean name="costMgmtForm" type="ft.com.pri.CostMgmtForm"/>
+      <form-bean name="priceHistoryForm" type="ft.com.pri.PriceHistoryForm"/>
+ </form-beans>
+  <global-forwards>
+    <forward name="priceGrpHome" path="/pri/newPricingHome.jsp"/>
+     
+  </global-forwards>
+  <action-mappings>
+    <action path="/pri/priGrp" type="ft.com.pri.PriGrpAction" name="priGrpForm"
+            parameter="method" scope="request">
+      <forward name="view" path="/pri/priGrpPage.jsp"/>
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/pri/priGrpPrp" type="ft.com.pri.PriGrpPrpAction" name="priGrpForm"
+            parameter="method" scope="request">
+      <forward name="view" path="/pri/priGrpPrp.jsp"/>
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+        
+     <action path="/pri/pricegp"
+        type="ft.com.pri.PriceGPAction"
+        name="PriceGPForm"
+        parameter="method"
+        scope="request">
+         <forward name="view" path="/pri/priceGroup.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/pri/costmgmt"
+        type="ft.com.pri.CostMgmtAction"
+        name="costMgmtForm"
+        parameter="method"
+        scope="request">
+         <forward name="load" path="/pri/costMgmt.jsp" />
+         <forward name="grpDtl" path="/pri/packetGrpDtl.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+   <action path="/pri/PriceCalc"
+        type="ft.com.pri.PriceCalcAction"
+        name="priceCalcForm"
+        parameter="method"
+        scope="session">
+         <forward name="load" path="/pri/priCalc.jsp" />
+        <forward name="history" path="/pri/packetHistory.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+     <action path="/pri/pricegpmatrix"
+        type="ft.com.pri.PriceGPMatrixAction"
+        name="priceGPMatrixForm"
+        parameter="method"
+        scope="session">
+         <forward name="priceGrpMatrix" path="/pri/DspPriceMatrix.jsp" />
+        <forward name="sheets" path="/pri/srchGrpMat.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/pri/pricegpdef"
+        type="ft.com.pri.PriceGPDefAction"
+        name="PriceGPDefForm"
+        parameter="method"
+        scope="request">
+         <forward name="view" path="/pri/priceGroupDef.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/pri/pricegpprpdef"
+        type="ft.com.pri.PriceGPPrpDefAction"
+        name="PriceGPPrpDefForm"
+        parameter="method"
+        scope="request">
+         <forward name="view" path="/pri/priceGPPrpDef.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/pri/PriceCalcMulti"
+            type="ft.com.pri.PriceCalcMultiAction"
+            name="priceCalcMultiForm"
+           parameter="method"
+           scope="session">
+    <forward name="load" path="/pri/priCalcMulti.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+ </action>
+ 
+    <action path="/pri/pricertn"
+        type="ft.com.pri.PriceRtnAction"
+        name="priceRtnForm"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/pri/priceRtn.jsp" />
+     <forward name="details" path="/pri/priceRtndetails.jsp" />
+       <forward name="loadStock" path="/pri/priceRtnUpd.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+  </action>
+
+   <action path="/pri/priceDtlMatrix"
+       type="ft.com.pri.PriceDtlMatrixAction"
+       name="priceDtlMatrixForm"
+       parameter="method"
+       scope="request">
+    <forward name="load" path="/pri/priceDtlMatrix.jsp" />
+   </action>
+   
+   <action path="/pri/priHistory" type="ft.com.pri.PriceHistoryAction" name="priceHistoryForm"
+            parameter="method" scope="session">
+      <forward name="load" path="/pri/priceHistory.jsp"/>
+      <forward name="priGrp" path="/pri/priceGroupDtl.jsp"/>
+     <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+    <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+     <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/pri/ajaxAssortAction" parameter="method" name="priceRtnForm" scope="session" type="ft.com.assort.AjaxAssortAction" />
+    <action path="/pri/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+     <action path="/pri/ajaxPrcAction" parameter="method" name="priGrpForm" scope="session" type="ft.com.pri.AjaxPriceAction" />
+ 
+  </action-mappings>
+</struts-config>
+

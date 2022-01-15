@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="repairIssueForm" type="ft.com.Repair.RepairingIssueForm" />
+<form-bean name="repairReturnForm" type="ft.com.Repair.RepairingReturnForm" />
+</form-beans>
+<action-mappings>
+ <action path="/repair/repairIssue"
+        type="ft.com.Repair.RepairingIssueAction"
+        name="repairIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/repair/repairingIssue.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+      <action path="/repair/repairReturn"
+        type="ft.com.Repair.RepairingReturnAction"
+        name="repairReturnForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/repair/repairReturn.jsp" />
+           <forward name="loadStock" path="/repair/repairingStockUpd.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/repair/ajaxsrchAction" parameter="method" name="repairIssueForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+
+</action-mappings>
+</struts-config>

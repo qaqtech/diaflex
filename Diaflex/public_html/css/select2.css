@@ -1,0 +1,9 @@
+.taggingSelect2{
+  width: 350px;
+       border:1px solid  #e6a16d;
+     /*1px rgb(99,99,99) solid ;*/
+     font-family: Calibri, Arial, Helvetica, sans-serif;
+     font-size: 12px;
+     overflow: hidden; 
+      height:18px;
+}

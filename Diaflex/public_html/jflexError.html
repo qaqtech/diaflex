@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <title>Diaflex : Login</title>
+    <script type="text/javascript" src="scripts/bse.js?v=1" ></script>
+    <link type="text/css" rel="stylesheet" href="css/bse.css?v=1"/>
+<script type="text/javascript">
+function LoadPage() {
+checkAccountNmCookie();
+var findCheck = document.location.href.split("?MSGON"); 
+if(findCheck.length == 2){ 
+document.getElementById('userpass').style.display='none';
+document.getElementById('db').style.display='block';
+} 
+}
+</script>
+  </head>
+  <body onload="LoadPage();">
+
+
+   
+    <form action="login.do?method=login" method="POST" onsubmit="return validateLoginForm();">
+    <div class="container">
+    <div style="display:block" id="userpass"><span class="redLabel">The User Name or Password is incorrect. Try again</span></div>
+    <div style="display:none"  id="db"><span class="redLabel">Diaflex Link On For All Users</span></div>
+   <div>
+  <table class="grid1">
+    
+    <tr><th colspan="2">Login to DiaFlex</th></tr>
+    <tr><td class="lft">Account Name</td>
+        <td class="lft">
+        <input type="text" size="30" name="dfaccount" id="dfaccount" maxlength="30"/></td>
+    </tr>
+    <tr><td class="lft">Username</td>
+        <td class="lft">
+        <input type="text" size="30" name="dfusr" id="dfusr" maxlength="30"/></td>
+    </tr>
+    <tr><td class="lft">Password</td>
+        <td class="lft">
+            <input type="password" size="30" name="dfpwd" id="dfpwd" maxlength="30"/></td>
+    </tr>
+    <!--<tr><td class="lft">Connect To</td>
+        <td class="lft">
+            
+            
+            <input type="radio" name="dbTyp" id="dbTypLive" value="OracleKRASA" checked="checked"/>&nbsp;Live&nbsp;
+            <input type="radio" name="dbTyp" id="dbTypTest" value="OracleKRASA"/>&nbsp;Test&nbsp;
+            
+        </td>
+    </tr>-->
+    
+    <tr>
+            <td class="lft"></td>
+            <td class="lft" nowrap="nowrap">
+            <select name="connectBy" id="connectBy">
+            <option value="DS">Default</option>
+            <option value="CP">Alternative</option>
+            </select>
+            </td>
+          </tr>
+    <tr><td colspan="2" class="cntr">
+       <button type="submit" class="submit" value="Login" >Submit</button>
+      
+    </td></tr>
+  </table></div>
+  </div>
+    
+    </form>
+  </body>
+</html>

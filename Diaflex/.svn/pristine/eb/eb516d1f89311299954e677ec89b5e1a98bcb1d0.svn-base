@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="mixAssortIssueLKForm" type="ft.com.mixLkhi.MixAssortLakhiForm" />
+<form-bean name="mixAssortReturnLKForm" type="ft.com.mixLkhi.MixAssortLKhiRtnFrom" />
+<form-bean name="mixMargeForm" type="ft.com.mixLkhi.MixMargeForm" />
+</form-beans>
+
+<action-mappings>
+<action path="/mixLkhi/mixAssortIssue" parameter="method"
+type="ft.com.mixLkhi.MixAssortLakhiAction" name="mixAssortIssueLKForm" scope="session">
+        <forward name="load" path="/mixLkhi/mixAssortIssue.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/mixLkhi/mixAssortReturn" parameter="method"
+type="ft.com.mixLkhi.MixAssortLKhiRtn" name="mixAssortReturnLKForm" scope="session">
+        <forward name="load" path="/mixLkhi/mixAssortRtn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+                <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixLkhi/mixMergeAction" parameter="method"
+type="ft.com.mixLkhi.MixMargeAction" name="mixMargeForm" scope="session">
+        <forward name="load" path="/mixLkhi/mixMarge.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+</action-mappings>
+</struts-config>

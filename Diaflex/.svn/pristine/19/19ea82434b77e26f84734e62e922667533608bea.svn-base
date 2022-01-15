@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="searchForm" type="ft.com.marketing.SearchForm"/>
+    <form-bean name="memoReturnForm" type="ft.com.marketing.MemoReturnFrm"/>
+    <form-bean name="memoReturnBulkForm" type="ft.com.marketing.MemoReturnBulkFrm"/>
+    <form-bean name="memoSaleForm" type="ft.com.marketing.MemoSaleFrm"/>
+    <form-bean name="memoReportForm" type="ft.com.marketing.MemoReportForm"/>
+    <form-bean name="memoXLForm" type="ft.com.marketing.MemoXLForm"/>
+    <form-bean name="saleDeliveryForm" type="ft.com.marketing.SaleDeliveryForm"/>
+    <form-bean name="priceChangeForm" type="ft.com.marketing.PriceChangeForm"/>
+    <form-bean name="stockPrpUpdForm" type="ft.com.marketing.StockPrpUpdForm"/>
+    <form-bean name="offerPriceForm" type="ft.com.marketing.OfferPriceFrom"/>
+    <form-bean name="stockTallyForm" type="ft.com.marketing.StockTallyForm"/>
+    <form-bean name="stockCriteriaForm" type="ft.com.marketing.StockCriteriaForm"/>
+    <form-bean name="packetLookupForm" type="ft.com.marketing.PacketLookupForm"/>
+    <form-bean name="transferToMixForm" type="ft.com.marketing.TransferToMixForm"/>
+     <form-bean name="packetPrintForm" type="ft.com.marketing.PacketPrintForm"/>
+     <form-bean name="memoSrchForm" type="ft.com.marketing.MemoSrchForm" />
+     <form-bean name="deliveryRtnForm" type="ft.com.marketing.DeliveryReturnForm" />
+     <form-bean name="consignmentForm" type="ft.com.marketing.ConsignmentForm" />
+      <form-bean name="postShipmentForm" type="ft.com.marketing.PostShipmentForm" />
+      <form-bean name="pendingForm" type="ft.com.marketing.PendingFMemoForm" />
+     <form-bean name="localSaleForm" type="ft.com.marketing.LocalSalRtnForm" />
+      <form-bean name="consignmentSaleForm" type="ft.com.marketing.ConsignmentSaleForm"/>
+       <form-bean name="locationDlvForm" type="ft.com.marketing.LocationDlvForm" />
+       <form-bean name="saleDeliveryByBillingForm" type="ft.com.marketing.SaleDeliveryByBillingForm" />
+       <form-bean name="saleByBillingForm" type="ft.com.marketing.SaleByBillingPartyForm" />
+       <form-bean name="buyBackForm" type="ft.com.marketing.BuyBackForm" />
+       <form-bean name="postBuyBackForm" type="ft.com.marketing.PostBuyBackForm" />
+        <form-bean name="branchReceivedForm" type="ft.com.marketing.BranchReceivedForm" />
+         <form-bean name="branchDeliveryForm" type="ft.com.marketing.BranchDLVForm" />
+         <form-bean name="branchDlvReportForm" type="ft.com.marketing.BranchDlvReportForm" />
+         <form-bean name="UpdateFinalExChangeRateForm" type="ft.com.marketing.UpdateFinalExChangeRateForm" />
+         <form-bean name="reCalChargeForm" type="ft.com.marketing.ReCalChargeForm" />
+         <form-bean name="memoTransferForm" type="ft.com.marketing.MemoTransferForm" />
+        <form-bean name="certIssueFrom" type="ft.com.marketing.CertIssueForm" />
+        <form-bean name="certReturnFrom" type="ft.com.marketing.CertReturnForm" />
+        <form-bean name="biddingIssueForm" type="ft.com.marketing.BiddingIssueFrom" />
+        <form-bean name="biddingReturnForm" type="ft.com.marketing.BiddingReturnForm" />
+        <form-bean name="consignmentByBilingPartyForm" type="ft.com.marketing.ConsignmentByBilingPartyForm" />
+        <form-bean name="consignmentReceiveForm" type="ft.com.marketing.ConsignmentReceiveForm" />
+        <form-bean name="smxSaleReturnForm" type="ft.com.marketing.SmxSaleReturnForm" />
+        <form-bean name="managePairForm" type="ft.com.marketing.ManagePairForm" />
+</form-beans>
+<action-mappings>
+ <action path="/marketing/StockSearch"
+         parameter="method"
+         type="ft.com.marketing.SearchAction"
+         scope="request"
+         name="searchForm"
+        >
+    <forward name="load" path="/marketing/searchPage.jsp" />
+    <forward name="loadFav" path="/marketing/searchPage.jsp" />
+    <forward name="loadTrm" path="/marketing/searchPage.jsp" />
+    <forward name="loadDmd" path="/marketing/searchPage.jsp" />
+    <forward name="DmdList" path="/marketing/demandList.jsp" />
+    <forward name="memo" redirect="true"  path="/marketing/memoReport.do?method=load" />
+    <forward name="memoApp" redirect="false"  path="/marketing/memoSale.do?method=load" />
+    <forward name="memoAppSH" redirect="false"  path="/marketing/memoSaleSH.do?method=load" />
+    <forward name="memoAppSal" redirect="false"  path="/marketing/memoSale.do?method=loadSale" />
+    <forward name="memortrn" redirect="false" path="/marketing/memoReturn.do?method=load" />
+    <forward name="saleDelivery" redirect="false" path="/mix/saleDelivery.do?method=loadPkt" />
+    <forward name="memoAppSalSH" redirect="false"  path="/marketing/memoSaleSH.do?method=loadSale" />
+    <forward name="srch" path="/marketing/dspStock.jsp" />
+    <forward name="bid" path="/marketing/bidPage.jsp" />
+    <forward name="loadSrch" path="/marketing/searchPage.jsp" />
+     <forward name="showSelected" path="/marketing/selected.jsp" />
+    <forward name="compare" path="/marketing/compare.jsp" />
+    <forward name="pair" path="/marketing/matchPairLst.jsp" />
+     <forward name="mailSuccess" path="/contact/mailsuccess.jsp" />
+     <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+        <forward name="memoSale" redirect="false" path="/marketing/saleDelivery.do?method=load" />
+        <forward name="details" path="/marketing/packetDtl.jsp" />
+      <forward name="grpNme" path="/marketing/grpNameWl.jsp" />
+      <forward name="price"  path="/marketing/memoPrice.do?method=pktList" />
+      <forward name="multiImgDtl" path="/marketing/multiImgsend.jsp" />
+      <forward name="loadPndPktsToIssue" path="/marketing/pndPktsIssue.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ 
+   <action path="/marketing/memoReturn"
+        type="ft.com.marketing.MemoReturnAction"
+        name="memoReturnForm"
+        parameter="method"
+        scope="request">
+     <forward name="NORMAL" path="/marketing/MemoReturn.jsp?view=Y" />
+     <forward name="merge" path="/marketing/MergeMemo.jsp" />
+     <forward name="pndPage" redirect="true" path="penfmemo.do?method=load" />
+     <forward name="memo" redirect="false" path="/marketing/memoReport.do?method=load" />
+     <forward name="rtrn" redirect="true" path="/marketing/memoReturn.do?method=load" />
+     <forward name="sale" redirect="false" path="/marketing/memoSale.do?method=load" />
+     <forward name="saleDelivery" redirect="false" path="/marketing/saleDelivery.do?method=load" />
+     <forward name="load" path="/marketing/MemoReturn.jsp" />
+      <forward name="loadWT" path="/marketing/WtChangeApprove.jsp" />
+     <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+   
+    <action path="/marketing/memoPrice"
+        type="ft.com.marketing.PriceChangeAction"
+        name="priceChangeForm"
+        parameter="method"
+        scope="request">
+   
+       <forward name="load" path="/marketing/priceChange.jsp" />
+      <forward name="memo" redirect="true"  path="/marketing/memoReport.do?method=load" />
+      <forward name="rtrn" redirect="false" path="/marketing/memoReturn.do?method=load" />
+      <forward name="consignment" redirect="false" path="/marketing/consignmentSale.do?method=load" />
+      <forward name="sale" redirect="false" path="/marketing/memoSale.do?method=load" />
+      <forward name="delivery" redirect="false" path="/marketing/saleDelivery.do?method=loadPkt" />
+       <forward name="prcLoad" path="/marketing/priceDetail.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+   <action path="/marketing/memoSale"
+        type="ft.com.marketing.MemoSaleAction"
+        name="memoSaleForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/marketing/MemoSales.jsp" />
+    <forward name="load" path="/marketing/MemoSales.jsp" />
+    <forward name="authenticate" path="/marketing/saleAuthenticate.jsp" />
+       <forward name="perInv" path="/marketing/performInvoice.jsp" />
+       <forward name="delivery" redirect="false" path="/marketing/saleDelivery.do?method=load" />
+       <forward name="pktDtl" path="/stockResult.jsp" />
+       <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        
+  </action>
+  
+     <action path="/marketing/memoSaleSH"
+        type="ft.com.marketing.MemoSaleActionSH"
+        name="memoSaleForm"
+        parameter="method"
+        scope="request">
+    <forward name="viewSH" path="/marketing/MemoSalesSH.jsp" />
+    <forward name="loadSH" path="/marketing/MemoSalesSH.jsp" />
+    <forward name="authenticate" path="/marketing/saleAuthenticate.jsp" />
+       <forward name="perInv" path="/marketing/performInvoice.jsp" />
+       <forward name="pktDtl" path="/stockResult.jsp" />
+       <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        
+  </action>
+  
+   <action path="/marketing/memoReport"
+        type="ft.com.marketing.MemoReportAction"
+        name="memoReportForm"
+        parameter="method"
+        scope="request">
+   
+       <forward name="load" path="/marketing/memoReport.jsp" />
+       <forward name="view" redirect="false" path="/contact/massmail.do?method=mailListView" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+  <action path="/marketing/memoXL"
+        type="ft.com.marketing.MemoXLAction"
+        name="memoXLForm"
+        parameter="method"
+        scope="request">
+   
+       <forward name="load" path="/marketing/memoXL.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+   <action path="/marketing/saleDelivery"
+        type="ft.com.marketing.SaleDeliveryAction"
+        name="saleDeliveryForm"
+        parameter="method"
+        scope="request">
+   
+       <forward name="load" path="/marketing/saleDelivery.jsp" />
+        <forward name="perInv" path="/marketing/performInvoice.jsp" />
+      <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+   <action path="/marketing/consignment"
+        type="ft.com.marketing.ConsignmentAction"
+        name="consignmentForm"
+        parameter="method"
+        scope="request">
+   
+       <forward name="load" path="/marketing/consignment.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+      
+  </action>
+  
+  <action path="/marketing/localSaleRtn"
+        type="ft.com.marketing.LocalSalRtnAction"
+        name="localSaleForm"
+        parameter="method"
+        scope="request">
+     <forward name="load" path="/marketing/LocalSaleRtn.jsp" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+    <action path="/marketing/deliveryRtn"
+        type="ft.com.marketing.DeliveryReturnAction"
+        name="deliveryRtnForm"
+        parameter="method"
+        scope="request">
+     <forward name="load" path="/marketing/deliveryRtn.jsp" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  <action path="/marketing/transferToMix"
+        type="ft.com.marketing.TransferToMixAction"
+        name="transferToMixForm"
+        parameter="method"
+        scope="session">
+   
+       <forward name="load" path="/marketing/transferToMix.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+      
+  </action>
+  
+  <action path="/marketing/memoBulkReturn"
+        type="ft.com.marketing.MemoReturnBulkAction"
+        name="memoReturnBulkForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/marketing/MemoReturnBulk.jsp" />
+    <forward name="memo" redirect="true"  path="/marketing/memoReport.do?method=load" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+    <action path="/marketing/memoApproveBulkReturn"
+        type="ft.com.marketing.MemoApproveBulkAction"
+        name="memoReturnBulkForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/marketing/MemoApproveBulk.jsp" />
+    <forward name="memo" redirect="true"  path="/marketing/memoReport.do?method=load" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  <action path="/marketing/StockPrpUpd"
+        type="ft.com.marketing.StockPrpUpdAction"
+        name="stockPrpUpdForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/marketing/stockPrpUpd.jsp" />
+    <forward name="load" path="/marketing/stockPrpUpd.jsp" />
+    <forward name="update" path="/marketing/stockUpd.jsp" />
+    <forward name="loadPrp" path="/marketing/bulkPrpUpdate.jsp" />
+    <forward name="loadBulkPrp" path="/marketing/stockBulkUpd.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+    <action path="/marketing/UpdateFinalExchangeRate"
+        type="ft.com.marketing.UpdateFinalExchangeRate"
+        name="UpdateFinalExChangeRateForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/marketing/updatFinalExchnage.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+     </action>
+   <action path="/marketing/offerPrice"
+    name="offerPriceForm" 
+    parameter="method" 
+    type="ft.com.marketing.OfferPriceAction" scope="request" >
+    <forward name="load" path="/marketing/offerPage.jsp" />
+     <forward name="loadRpt" path="/marketing/offerHistory.jsp" />
+     <forward name="loadKapuOction" path="/marketing/oction.jsp" />
+     <forward name="view" redirect="false" path="/contact/massmail.do?method=mailListView" />
+          <forward name="memo" redirect="false" path="/marketing/memoReport.do?method=load" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/marketing/stockTally"
+    name="stockTallyForm" 
+    parameter="method" 
+    type="ft.com.marketing.StockTallyAction" scope="session" >
+      <forward name="load" path="/marketing/stockTally.jsp" />
+       <forward name="loadRT" path="/marketing/stockTallyRtn.jsp" />
+         <forward name="return" path="/marketing/stockTallyRtn.jsp" />
+         <forward name="loadRS" path="/marketing/stockTallyList.jsp" />
+          <forward name="TallyCRT" path="/marketing/stockTallyCrtDtl.jsp" />
+                  <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/marketing/newStockTally"
+    name="stockTallyForm" 
+    parameter="method" 
+    type="ft.com.marketing.NewStockTallyAction" scope="session" >
+      <forward name="load" path="/marketing/newStockTally.jsp" />
+       <forward name="loadRtn" path="/marketing/newStockTallyRtn.jsp" />
+       <forward name="loadRtnHk" path="/marketing/StockTallyRtnHk.jsp" />
+         <forward name="loadRS" path="/marketing/stockTallyList.jsp" />
+           <forward name="TallyCRT" path="/marketing/stockTallyCrtDtl.jsp" />
+           <forward name="history" path="/marketing/newStockTallyHistory.jsp" />
+          <forward name="TallyCRTHistory" path="/marketing/stockTallyCrtDtlHis.jsp" />
+          <forward name="dayWisehistory" path="/marketing/newStockTallyDayWiseHistory.jsp" />
+         <forward name="delete" path="/marketing/deleteStocktally.jsp" />   
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/marketing/stockTallyhk"
+    name="stockTallyForm" 
+    parameter="method" 
+    type="ft.com.marketing.StockTallyActionHk" scope="session" >
+      <forward name="load" path="/marketing/StockTallyHk.jsp" />
+       <forward name="loadRtn" path="/marketing/StockTallyRtnHk.jsp" />
+         <forward name="loadRSHk" path="/marketing/stockTallyListHk.jsp" />
+         <forward name="loadRS" path="/marketing/stockTallyListHk.jsp" />
+         <forward name="loadRSPkt" path="/marketing/stockTallyListHkPkt.jsp" />
+           <forward name="TallyCRT" path="/marketing/stockTallyCrtDtlhk.jsp" />
+           <forward name="history" path="/marketing/stockTallyHistoryhk.jsp" />
+          <forward name="TallyCRTHistory" path="/marketing/stockTallyCrtDtlHis.jsp" />
+          <forward name="dayWisehistory" path="/marketing/newStockTallyDayWiseHistory.jsp" />
+          <forward name="TallyCRTonApproval" path="/marketing/stockTallyCrtDtlOnAppHK.jsp" />
+          <forward name="TallyCRTonApprovalLoc" path="/marketing/stockTallyCrtDtlOnAppLocHK.jsp" />
+          <forward name="delete" path="/marketing/deleteStocktallyhk.jsp" />
+          <forward name="loadsetupseq" path="/marketing/stockTallySetup.jsp" />
+                  <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/marketing/stockCrt"
+    name="stockCriteriaForm" 
+    parameter="method" 
+    type="ft.com.marketing.StockCriteriaAction" scope="request" >
+      <forward name="load" path="/marketing/StockCriteria.jsp" />
+    <forward name="type" path="/marketing/StockCriteria.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+         <action path="/marketing/stockCrtNew"
+    name="stockCriteriaForm" 
+    parameter="method" 
+    type="ft.com.marketing.StockCriteriaActionNew" scope="request" >
+    <forward name="load" path="/marketing/StockCriteriaNew.jsp" />
+    <forward name="pktDtl" path="/stockResult.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/marketing/PacketLookup"
+    name="packetLookupForm" 
+    parameter="method" 
+    type="ft.com.marketing.PacketLookupAction" scope="request" >
+      <forward name="view" path="/marketing/packetLookup.jsp" />
+       <forward name="viewDtl" path="/marketing/packetLookDtl.jsp" />
+       <forward name="detailvw" path="/marketing/packetLookupDtl.jsp" />
+        <forward name="grpDtl" path="/marketing/packetGrpDtl.jsp" />
+        <forward name="loadtl" path="/marketing/pktGrpHisDtl.jsp" />
+        <forward name="pktLabhistory" path="/marketing/pktLabhistory.jsp" />
+        <forward name="rapSync" path="/marketing/rapSyncLog.jsp" />
+        <forward name="mailSuccess" path="/contact/mailsuccess.jsp" />
+        <forward name="multiImgDtl" path="/marketing/multiImgsendPacketLookup.jsp" />
+        <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+ <action path="/marketing/packetPrint"
+    name="packetPrintForm" 
+    parameter="method" 
+    type="ft.com.marketing.PacketPrintAction" scope="session" >
+      <forward name="load" path="/marketing/packetPrint.jsp" />
+   </action>
+    <action path="/marketing/memoSrch"
+       name="memoSrchForm" 
+    parameter="method" 
+    type="ft.com.marketing.MemoSrchAction" scope="session" >
+      <forward name="load" path="/marketing/memoSrch.jsp" />
+      <forward name="pktDtl" path="/stockResult.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+   </action>
+  
+     <action path="/marketing/postShipment"
+       name="postShipmentForm" 
+       parameter="method" 
+       type="ft.com.marketing.PostShipmentAction" scope="request" >
+     <forward name="load" path="/marketing/postShipment.jsp" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/marketing/consignmentSale"
+   type="ft.com.marketing.ConsignmentSaleAction"
+   name="consignmentSaleForm"
+   parameter="method"
+   scope="request">
+         <forward name="view" path="/marketing/ConsignmentSales.jsp" />
+         <forward name="load" path="/marketing/ConsignmentSales.jsp" />
+         <forward name="perInv" path="/marketing/performInvoice.jsp" />
+         <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+        </action>
+        
+<action path="/marketing/penfmemo"
+type="ft.com.marketing.PendingFMemoAction"
+name="pendingForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/marketing/pendingFMemo.jsp" />
+<forward name="loadDlv" path="/marketing/pendingDlv.jsp" />
+<forward name="loadbrcDlv" path="/marketing/pendingbrcDlv.jsp" />
+<forward name="loadPendingConsignment" path="/marketing/PendingConsignment.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+   
+   <action path="/marketing/locDelivery"
+type="ft.com.marketing.LocationDlvAction"
+name="locationDlvForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/marketing/locationDlv.jsp" />
+<forward name="perInv" path="/marketing/HkPerformaInvoice.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/marketing/performa"
+type="ft.com.marketing.PerformaAction"
+name="saleDeliveryForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/marketing/performa.jsp" />
+<forward name="perInv" path="/marketing/performInvoice.jsp" />
+<forward name="perInvHK" path="/marketing/HkPerformaInvoice.jsp" />
+<forward name="perInvHKPDF" path="/jasperReport/jasperReportPrint.jsp" />
+<forward name="mail" path="/contact/mailsuccess.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+
+    <action path="/marketing/saleDeliveryByBilling"
+            type="ft.com.marketing.SaleDeliveryByBillingPrt"
+            name="saleDeliveryByBillingForm"
+            parameter="method"
+            scope="request">
+           <forward name="load" path="/marketing/saleDeliveryByBillingPrt.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+        <action path="/marketing/saleByBilling"
+            type="ft.com.marketing.SaleByBillingPartyAction"
+            name="saleByBillingForm"
+            parameter="method"
+            scope="request">
+           <forward name="load" path="/marketing/saleByBillingpty.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+   <action path="/marketing/buyBack"
+            type="ft.com.marketing.BuyBackAction"
+            name="buyBackForm"
+            parameter="method"
+            scope="request">
+           <forward name="load" path="/marketing/buyBack.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+  <action path="/marketing/postBuyBack"
+            type="ft.com.marketing.PostBuyBackAction"
+            name="postBuyBackForm"
+            parameter="method"
+            scope="request">
+           <forward name="load" path="/marketing/postBuyBack.jsp" />
+           <forward name="view" path="/marketing/postBuyBack.jsp" />
+           <forward name="mail" redirect="false" path="/contact/massmail.do?method=mailListView" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/marketing/branceReceive"
+            type="ft.com.marketing.BranchReceivedAction"
+            name="branchReceivedForm"
+            parameter="method"
+            scope="request">
+           <forward name="load" path="/marketing/branchReceived.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/marketing/consignReceive"
+            type="ft.com.marketing.ConsignmentReceiveAction"
+            name="consignmentReceiveForm"                                                            
+            parameter="method"
+            scope="request">
+        <forward name="load" path="/marketing/consignmentReceive.jsp" />
+        <forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    <action path="/marketing/branceReport"
+            type="ft.com.marketing.BranchDlvReport"
+            name="branchDlvReportForm"
+            parameter="method"
+            scope="session">
+           <forward name="load" path="/marketing/branchPending.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+<action path="/marketing/branceDelivery"
+type="ft.com.marketing.BranchDLVAction"
+name="branchDeliveryForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/marketing/branchDlv.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/marketing/consignByBilling"
+type="ft.com.marketing.ConsignmentByBilingParty"
+name="consignmentByBilingPartyForm"
+parameter="method"
+scope="session">
+<forward name="load" path="/marketing/consignmentByBilingParty.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+    
+
+    <action path="/marketing/xlSaleDelivery"
+type="ft.com.marketing.XlDeliveryAction"
+name="saleDeliveryForm"
+parameter="method"
+scope="request">
+
+<forward name="load" path="/marketing/xlDelivery.jsp" />
+<forward name="perInv" path="/marketing/performInvoice.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/marketing/recalcharges"
+type="ft.com.marketing.ReCalChargeAction"
+name="reCalChargeForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/marketing/reCalCharge.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+   <action path="/marketing/memoTranserAction"
+       name="memoTransferForm" 
+       parameter="method" 
+       type="ft.com.marketing.MemoTransferAction" scope="session" >
+     <forward name="load" path="/marketing/MemoTransfer.jsp" />
+         <forward name="memo" redirect="false" path="/marketing/memoReport.do?method=load" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+  
+   <action path="/marketing/certIssueAction"
+       name="certIssueFrom" 
+       parameter="method" 
+       type="ft.com.marketing.CertIssueAction" scope="session" >
+         <forward name="load" path="/marketing/certIssue.jsp" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+         <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/marketing/certRetrunAction"
+       name="certReturnFrom" 
+       parameter="method" 
+       type="ft.com.marketing.CertReturnAction" scope="session" >
+         <forward name="load" path="/marketing/certReturn.jsp" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+         <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/marketing/biddingIssueAction"
+       name="biddingIssueForm" 
+       parameter="method" 
+       type="ft.com.marketing.BiddingIssueAction" scope="session" >
+         <forward name="load" path="/marketing/biddingIssue.jsp" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+         <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/marketing/biddingReturnAction"
+       name="biddingReturnForm" 
+       parameter="method" 
+       type="ft.com.marketing.BiddingReturnAction" scope="session" >
+         <forward name="load" path="/marketing/biddingReturn.jsp" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+         <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/marketing/smxSaleReturnAction"
+       name="smxSaleReturnForm" 
+       parameter="method" 
+       type="ft.com.marketing.SmxSaleReturnAction" scope="session" >
+         <forward name="load" path="/marketing/SmxSaleReturn.jsp" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+         <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+            <action path="/marketing/managepair"
+       name="managePairForm" 
+       parameter="method" 
+       type="ft.com.marketing.ManagePairAction" scope="request" >
+         <forward name="load" path="/marketing/managepair.jsp" />
+         <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+         <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+         <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+         <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/marketing/ajaxPrcAction"
+        type="ft.com.pricing.AjaxPrcAction"
+        name="transferToMktForm"
+        parameter="method"/>
+        
+  <action path="/marketing/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+  <action path="/marketing/scanProcess" parameter="method" name="searchForm" scope="request" type="ft.com.RFIDScanner" />
+     <action path="/marketing/ajaxAssortAction" parameter="method"    name="assortReturnForm"   type="ft.com.assort.AjaxAssortAction" />
+
+<action path="/marketing/ajaxissueAction" parameter="method" name="AssortLabReportForm" scope="session" type="ft.com.inward.AjaxIssueAction" />
+<action path="/marketing/ajaxRptAction" parameter="method" name="searchForm" scope="session" type="ft.com.report.AjaxRptAction" />
+<action path="/marketing/pktrfidboxalloc" parameter="method" name="packetRfidBoxAllocForm" scope="session" type="ft.com.rfid.PacketRfidBoxAllocAction" />
+
+</action-mappings>
+</struts-config>

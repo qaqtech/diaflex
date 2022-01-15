@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="verificationForm" type="ft.com.mixakt.VerificationForm" />
+<form-bean name="mixAssortReturnForm" type="ft.com.mixakt.MixAssortReturnForm" />
+<form-bean name="mixTransferKapuForm" type="ft.com.mixakt.MixTransferKapuForm" />
+<form-bean name="stonesTransferForm" type="ft.com.mixakt.StonesTransferForm" />
+<form-bean name="mixReturnForm" type="ft.com.mixakt.MixReturnForm" />
+<form-bean name="mixStockTallyForm" type="ft.com.mixakt.MixStockTallyForm" />
+<form-bean name="profitLossReportForm" type="ft.com.mixakt.ProfitLossReportForm" />
+<form-bean name="mixTransactionForm" type="ft.com.mixakt.MixTransactionForm" />
+<form-bean name="autoJangadForm" type="ft.com.mixakt.AutoJangadForm" />
+<form-bean name="mixInwardReportForm" type="ft.com.mixakt.MixInwardReportForm" />
+<form-bean name="mixDeliveryForm" type="ft.com.mixakt.MixDeliveryForm" />
+<form-bean name="mixDeliveryUpdateForm" type="ft.com.mixakt.MixDeliveryUpdateForm" />
+</form-beans>
+
+<action-mappings>
+<action path="/mixAkt/assortPending" parameter="method"
+type="ft.com.mixakt.VerificationAction" name="verificationForm" scope="session">
+        <forward name="load" path="/mixAkt/verification.jsp" />
+         <forward name="loadPkt" path="/mixAkt/verificationPktDtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixAkt/mixTransaction" parameter="method"
+type="ft.com.mixakt.MixTransactionReport" name="mixTransactionForm" scope="request">
+        <forward name="load" path="/mixAkt/mixTransaction.jsp" />
+          <forward name="loadSJE" path="/mixAkt/mixTransSJE.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+<action path="/mixAkt/assortReturn" parameter="method"
+type="ft.com.mixakt.MixAssortReturnAction" name="mixAssortReturnForm" scope="session">
+        <forward name="load" path="/mixAkt/mixAssortRtn.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixAkt/mixTransferAction" parameter="method"
+type="ft.com.mixakt.MixTransferKapuAction" name="mixTransferKapuForm" scope="session">
+        <forward name="load" path="/mixAkt/mixTransKapu.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/mixAkt/stonesTransferAction" parameter="method"
+type="ft.com.mixakt.StonesTransferAction" name="stonesTransferForm" scope="session">
+        <forward name="load" path="/mixAkt/StonesTransfer.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+<action path="/mixAkt/mixReturnAction" parameter="method"
+ type="ft.com.mixakt.MixReturnAction" name="mixReturnForm" scope="session">
+         <forward name="NORMAL" path="/mixAkt/mixReturn.jsp?view=Y" />
+    <forward name="load" path="/mixAkt/mixReturn.jsp" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+<action path="/mixAkt/mixStockTally" parameter="method"
+type="ft.com.mixakt.MixStockTallyAction" name="mixStockTallyForm" scope="session">
+        <forward name="load" path="/mixAkt/mixStockTally.jsp" />
+         <forward name="loadRtn" path="/mixAkt/mixStockTally.do?method=loadRtn" redirect="true"  />
+        <forward name="RtnTally" path="/mixAkt/mixStockTallyRtn.jsp"  />
+        <forward name="history" path="/mixAkt/mixStockTallyHis.jsp"  />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/mixAkt/profitLossReport" parameter="method"
+type="ft.com.mixakt.ProfitLossReportAction" name="profitLossReportForm" scope="session">
+    <forward name="load" path="/mixAkt/profitLossReport.jsp" />
+    <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+    <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+   <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/mixAkt/autoJangad" parameter="method"
+type="ft.com.mixakt.AutoJangadAction" name="autoJangadForm" scope="session">
+    <forward name="load" path="/mixAkt/AutoJangad.jsp" />
+    <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+    <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+   <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+</action>
+
+<action path="/mixAkt/assortPending" parameter="method"
+type="ft.com.mixakt.VerificationAction" name="verificationForm" scope="session">
+        <forward name="load" path="/mixAkt/verification.jsp" />
+         <forward name="loadPkt" path="/mixAkt/verificationPktDtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixAkt/mixInwardAction" parameter="method"
+type="ft.com.mixakt.MixInwardReportAction" name="mixInwardReportForm" scope="session">
+        <forward name="load" path="/mixAkt/MixInwardReport.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixAkt/mixDeliveryAction" parameter="method"
+type="ft.com.mixakt.MixDeliveryAction" name="mixDeliveryForm" scope="session">
+        <forward name="load" path="/mixAkt/mixDelivery.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixAkt/mixDeliveryByBillingAction" parameter="method"
+type="ft.com.mixakt.MixDeliveryByBillingParty" name="mixDeliveryForm" scope="session">
+        <forward name="load" path="/mixAkt/mixDeliveryByBilling.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/mixAkt/mixDeliveryUpdateAction" parameter="method"
+type="ft.com.mixakt.MixDeliveryUpdateAction" name="mixDeliveryUpdateForm" scope="session">
+        <forward name="load" path="/mixAkt/mixDeliveryUpd.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+ <action path="/mixAkt/ajaxLabAction" parameter="method"   type="ft.com.lab.AjaxLabAction" name="labResultForm"/>
+ <action path="/mixAkt/mixAktAjaxAction" parameter="method"   type="ft.com.mixakt.MixAktAjaxAction" name="mixAssortReturnForm"/>
+ <action path="/mixAkt/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+ <action path="/mixAkt/ajaxRptAction" parameter="method" name="reportForm" scope="session" type="ft.com.report.AjaxRptAction" />
+<action path="/mixAkt/saleDelivery"
+        type="ft.com.mix.MixSaleDeliveryAction"
+        name="mixsaleDeliveryForm"
+        parameter="method"
+        scope="request"/>
+</action-mappings>
+</struts-config>

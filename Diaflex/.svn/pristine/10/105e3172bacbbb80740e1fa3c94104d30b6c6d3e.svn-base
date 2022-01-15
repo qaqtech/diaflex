@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="roughpurform" type="ft.com.rough.RoughPurchaseForm"/>
+     <form-bean name="roughPurchaseDtlForm" type="ft.com.rough.RoughPurchaseDtlForm"/>
+     <form-bean name="splitIssueForm" type="ft.com.rough.SplitIssueForm"/>
+     <form-bean name="splitReturnForm" type="ft.com.rough.SplitReturnForm"/>
+     <form-bean name="planingReturnForm" type="ft.com.rough.PlaningReturnForm"/>
+       <form-bean name="roughMergeFrom" type="ft.com.rough.RoughMergeFrom"/>
+       <form-bean name="roughClosureForm" type="ft.com.rough.RoughClosureForm" />
+       <form-bean name="roughGridingForm" type="ft.com.rough.RoughGridingForm" />
+        <form-bean name="roughGroupFrom" type="ft.com.rough.RoughGroupFrom" />
+</form-beans>
+<action-mappings>
+     
+      <action path="/rough/roughPurAction"
+        type="ft.com.rough.RoughPurchaseAction"
+        name="roughpurform"
+        parameter="method"
+        scope="session">
+        <forward name="view" path="/rough/roughPurchase.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+      <action path="/rough/roughGroupAction"
+        type="ft.com.rough.RoughGroupAction"
+        name="roughGroupFrom"
+        parameter="method"
+        scope="session">
+         
+         <forward name="load" path="/rough/roughGroup.jsp" />
+         
+        
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/rough/roughPurDtlAction"
+        type="ft.com.rough.RoughPurchaseDtlAction"
+        name="roughPurchaseDtlForm"
+        parameter="method"
+        scope="request">
+         <forward name="view" path="/rough/roughPurchaseDtl.jsp" />
+         
+         <forward name="loadPrp" path="/rough/roughpurchasePrp.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/rough/roughSplitIssue"
+        type="ft.com.rough.SplitIssueAction"
+        name="splitIssueForm"
+        parameter="method"
+        scope="session">
+           <forward name="load" path="/rough/roughSplitIssue.jsp" />
+        <forward name="view" path="/rough/roughSplitIssue.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/rough/roughReturnAction"
+        type="ft.com.rough.SplitReturnAction"
+        name="splitReturnForm"
+        parameter="method"
+        scope="session">
+           <forward name="load" path="/rough/roughSplitRtn.jsp" />
+             <forward name="exitsSplit" path="/rough/splitsExitsPage.jsp" />
+            <forward name="bulkSplit" path="/rough/roughBulkSplit.jsp" />
+        <forward name="loadPop" path="/rough/roughSplitPkt.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/rough/planingReturnAction"
+        type="ft.com.rough.PlaningReturnAction"
+        name="planingReturnForm"
+        parameter="method"
+        scope="session">
+           <forward name="load" path="/rough/planingRtn.jsp" />
+        <forward name="loadPlan" path="/rough/planPage.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/rough/roughMergeAction"
+        type="ft.com.rough.RoughMergeAction"
+        name="roughMergeFrom"
+        parameter="method"
+        scope="session">
+           <forward name="load" path="/rough/roughMerge.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/rough/roughClosureAction" parameter="method"
+     type="ft.com.rough.RoughClosureAction" name="roughClosureForm" scope="session">
+        <forward name="load" path="/rough/roughClosure.jsp" />
+        <forward name="ReturnClosure" path="/rough/roughClosure.jsp" />
+        <forward name="loadPkt" path="/rough/closurePktDtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/rough/roughGridingReport" parameter="method"
+     type="ft.com.rough.RoughGridingReport" name="roughGridingForm" scope="request">
+        <forward name="load" path="/rough/roughGridingReport.jsp" />
+        <forward name="loadPktDtl" path="/rough/roughGridingPacketDtl.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/rough/roughPolishPlanCompar" parameter="method"
+     type="ft.com.rough.RoughPolishPlanComparReport" name="roughGroupFrom" scope="request">
+        <forward name="load" path="/rough/roughPolishComp.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    
+    <action path="/rough/mixAssortRtnAction" parameter="method" name="splitReturnForm" scope="request" 
+     type="ft.com.mix.MixAssortRtnAction" />
+  <action path="/rough/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+  <action path="/rough/ajaxAssortAction" parameter="method"  name="assortReturnForm"   type="ft.com.assort.AjaxAssortAction" />
+
+   
+    </action-mappings>
+</struts-config>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="packetRfidAllocForm" type="ft.com.rfid.PacketRfidAllocForm"/>
+    <form-bean name="packetRfidBoxAllocForm" type="ft.com.rfid.PacketRfidBoxAllocForm"/>
+</form-beans>
+<action-mappings>
+<action path="/rfid/pktrfidalloc"
+        type="ft.com.rfid.PacketRfidAllocAction"
+        name="packetRfidAllocForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/rfid/packetRfidAlloc.jsp" />
+        <forward name="pktDtl" path="/stockResult.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/rfid/pktrfidboxalloc"
+        type="ft.com.rfid.PacketRfidBoxAllocAction"
+        name="packetRfidBoxAllocForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/rfid/packetRfidBoxAlloc.jsp" />
+        <forward name="pktDtl" path="/stockResult.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+</action-mappings>
+</struts-config>

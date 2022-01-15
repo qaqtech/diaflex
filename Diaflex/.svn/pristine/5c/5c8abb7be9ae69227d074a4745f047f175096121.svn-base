@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="discoverReportFormMG" type="ft.com.QuickReport.DiscoverReportForm" />
+<form-bean name="genericReportFormMG" type="ft.com.QuickReport.GenericReportForm"/>
+</form-beans>
+<action-mappings>
+
+    
+    <action path="/quickReport/discoverReport"
+        type="ft.com.QuickReport.DiscoverAction"
+        name="discoverReportFormMG"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/quickReport/Discover.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+   <action path="/quickReport/genericReport"
+type="ft.com.QuickReport.GenericReportAction"
+name="genericReportFormMG"
+parameter="method"
+scope="request">
+<forward name="load" path="/quickReport/genericReport.jsp" />
+<forward name="srchR" path="/quickReport/genericReportView.jsp" />
+<forward name="srchS" path="/quickReport/genericReportshapeView.jsp" />
+<forward name="loadDtl" path="/quickReport/genericPktDtl.jsp" />
+<forward name="summary" path="/quickReport/genericSummaryDtl.jsp" />
+<forward name="colClrUp" path="/quickReport/viewResult.jsp" />
+<forward name="graph" path="/quickReport/pieChart.jsp" />
+<forward name="Weeksummary" path="/quickReport/genericWeekSummaryDtl.jsp" />
+<forward name="summaryioWeek" path="/quickReport/genericSummaryDtlweek.jsp" />
+<forward name="ageGen" path="/quickReport/ageGenericReport.jsp" />
+<forward name="giasummary" path="/quickReport/genericGiaSummary.jsp" />
+<forward name="fiftydownpt" path="/quickReport/genericfiftydown.jsp" />
+<forward name="sizepurity" path="/quickReport/genericSizePurity.jsp" />
+<forward name="memoshape" path="/quickReport/genericMemoShape.jsp" />
+<forward name="shapeclarity" path="/quickReport/shapeClarityBarGraph.jsp" />
+<forward name="pricegraphrpt" path="/quickReport/genericPriceGraph.jsp" />
+<forward name="imageDtl" path="/quickReport/genericImageDtl.jsp" />
+<forward name="srchRHitMap" path="/quickReport/genericReportViewHitMap.jsp" />
+<forward name="loadstkoenclose" path="/quickReport/genericStockOpenClose.jsp" />
+<forward name="loadstkoencloseshape" path="/quickReport/genericopencloseshape.jsp" />
+<forward name="loadstkoencloseco" path="/quickReport/genericopencloseco.jsp" />
+<forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+<action path="/quickReport/ajaxRptAction" parameter="method" name="reportForm" scope="session" type="ft.com.report.AjaxRptAction" />
+</action-mappings>
+</struts-config>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="BoxPrpUpdForm" type="ft.com.box.BoxPrpUpdForm"/>
+    <form-bean name="boxCriteriaForm" type="ft.com.box.BoxCriteriaForm"/>
+    <form-bean name="boxReturnForm" type="ft.com.box.BoxReturnForm"/>
+    <form-bean name="boxSelectionForm" type="ft.com.box.BoxSelectionForm" />
+    <form-bean name="boxSplitForm" type="ft.com.box.BoxSplitForm" />
+    <form-bean name="boxtoBoxForm" type="ft.com.box.BoxtoBoxForm" />
+    <form-bean name="pendingMixForm" type="ft.com.box.PendingMixForm" />
+    <form-bean name="boxSaleReturnForm" type="ft.com.box.BoxSaleReturnForm" />
+    <form-bean name="boxMasterForm" type="ft.com.box.BoxMasterForm" />
+    <form-bean name="splitForm" type="ft.com.box.SplitForm" />
+    <form-bean name="boxtoBoxSjeForm" type="ft.com.boxsje.BoxToBoxForm" />
+    <form-bean name="singleToSmxForm" type="ft.com.box.SingleToSmxForm" />
+</form-beans>
+<action-mappings>
+  <action path="/box/BoxPrpUpd"
+        type="ft.com.box.BoxPrpUpdAction"
+        name="BoxPrpUpdForm"
+        parameter="method"
+        scope="request">
+    
+    <forward name="view" path="/box/boxPrpUpd.jsp" />
+    <forward name="update" path="/box/boxPrpUpd.jsp" />
+    <forward name="updprp" path="/box/boxUpd.jsp" />
+    <forward name="boxadd" path="/box/boxcontent.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+    <action path="/box/boxmaster"
+        type="ft.com.box.BoxMasterAction"
+        name="boxMasterForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/box/boxMaster.jsp" />
+    <forward name="updprp" path="/box/boxMasterPrpUpd.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  
+      <action path="/box/singleToSmx"
+        type="ft.com.box.SingleToSmx"
+        name="singleToSmxForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/box/singleToSmx.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  <action path="/box/boxCrt"
+    name="boxCriteriaForm" 
+    parameter="method" 
+    type="ft.com.box.BoxCriteriaAction" scope="request" >
+      <forward name="load" path="/box/BoxCriteria.jsp" />
+    <forward name="type" path="/box/BoxCriteria.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+     <action path="/box/boxReturn"
+        type="ft.com.box.BoxReturnAction"
+        name="boxReturnForm"
+        parameter="method"
+        scope="request">
+    <forward name="NORMAL" path="/box/BoxReturn.jsp?view=Y" />
+    <forward name="load" path="/box/BoxReturn.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+ 
+ <action path="/box/boxToBoxSje"
+type="ft.com.boxsje.BoxToBox"
+name="boxtoBoxSjeForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/BoxSje/boxToBox.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+
+  <action path="/box/boxSelection"
+        type="ft.com.box.BoxSelectionAction"
+        name="boxSelectionForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/box/boxselectionnew.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/box/boxSalReturn"
+        type="ft.com.box.BoxSaleReturnAction"
+        name="boxSaleReturnForm"
+        parameter="method"
+        scope="request">
+           <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    <forward name="load" path="/box/boxSaleReturn.jsp" />
+  </action>
+  
+    <action path="/box/boxSplit"
+        type="ft.com.box.BoxSplitAction"
+        name="boxSplitForm"
+        parameter="method"
+        scope="session">
+        <forward name="loadsplit" path="/box/boxsplitnew.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+  
+    
+    <action path="/box/boxSplitMerge"
+        type="ft.com.box.BoxtoBoxAction"
+        name="boxtoBoxForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/box/boxtobox.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+        <action path="/box/split"
+        type="ft.com.box.SplitAction"
+        name="splitForm"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/box/split.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/box/PendingMix" type="ft.com.box.PendingMixAction"
+              name="pendingMixForm" parameter="method" scope="session">
+       <forward name="load" path="/box/PendingMix.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    <action path="/box/ajaxsrchAction" parameter="method" name="boxSelectionForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+     <action path="/box/saleDelivery" parameter="method" name="boxSelectionForm" scope="request" type="ft.com.mix.MixSaleDeliveryAction" />
+
+</action-mappings>
+</struts-config>

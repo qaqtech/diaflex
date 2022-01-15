@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="labIssueForm" type="ft.com.lab.LabIssueForm" />
+<form-bean name="labSelectionForm" type="ft.com.lab.LabSelectionForm" />
+<form-bean name="labResultForm" type="ft.com.lab.LabResultForm" />
+<form-bean name="finalLabSelectionForm" type="ft.com.lab.FinalLabSelectionForm" />
+<form-bean name="labComparison" type="ft.com.lab.LabComparisonForm" />
+<form-bean name="labComparisonRtnForm" type="ft.com.lab.LabComparisonRtnForm" />
+<form-bean name="labRtnForm" type="ft.com.lab.LabReturnForm" />
+<form-bean name="labrecheckForm" type="ft.com.lab.LabRecheckForm" />
+<form-bean name="multiLabForm" type="ft.com.lab.MultiLabForm" />
+<form-bean name="labIssueResSttForm" type="ft.com.lab.LabIssueResSttForm" />
+</form-beans>
+<action-mappings>
+   <action path="/lab/labIssue"
+        type="ft.com.lab.LabIssueAction"
+        name="labIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/labIssue.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+      <action path="/lab/autolabIssue"
+        type="ft.com.lab.AutoLabIssueAction"
+        name="labIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/autoLabIssue.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/lab/StockPrpUpd"
+        type="ft.com.marketing.StockPrpUpdAction"
+        name="stockPrpUpdForm"
+        parameter="method"
+        scope="request">
+    <forward name="view" path="/marketing/stockPrpUpd.jsp" />
+    <forward name="load" path="/marketing/stockPrpUpd.jsp" />
+    <forward name="update" path="/marketing/stockUpd.jsp" />
+    <forward name="loadPrp" path="/marketing/bulkPrpUpdate.jsp" />
+    <forward name="loadBulkPrp" path="/marketing/stockBulkUpd.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+    
+         <action path="/lab/labIssueRes"
+       type="ft.com.lab.LabIssueResSttAction"
+       name="labIssueResSttForm"
+       parameter="method"
+       scope="session">
+       <forward name="load" path="/lab/labIssueRpt.jsp" />
+       <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+       <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+       <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+       <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+   </action>
+   
+      <action path="/lab/labSelection"
+        type="ft.com.lab.LabSelectionAction"
+        name="labSelectionForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/labSelection.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/lab/labResult"
+        type="ft.com.lab.LabResultAction"
+        name="labResultForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/labResult.jsp" />
+        <forward name="loadView" path="/lab/viewLabResult.jsp" />
+        <forward name="service" path="/lab/labservicechange.jsp" />
+         <forward name="loadHIS" path="/lab/AssortHis.jsp" />
+         <forward name="loadPRC" path="/lab/processHistory.jsp" />
+         <forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/lab/labComparison"
+        type="ft.com.lab.LabComparisonAction"
+        name="labComparison"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/labComparison.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+     
+    </action>
+    <action path="/lab/labComparisonRtn"
+        type="ft.com.lab.LabComparisonRtnAction"
+        name="labComparisonRtnForm"
+        parameter="method"
+        scope="session">
+    <forward name="load" path="/lab/labComparisonRtn.jsp" />
+     <forward name="multiPrp" path="/lab/multiUpdPrp.jsp" />
+     <forward name="loadStock" path="/lab/labComparisonUpd.jsp" />
+             <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/lab/finalLabSelection"
+        type="ft.com.lab.FinalLabSelection"
+        name="finalLabSelectionForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/finalLabSelection.jsp" />
+         <forward name="loadDtl" path="/lab/labDetail.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/lab/labReturn"
+        type="ft.com.lab.LabReturnAction"
+        name="labRtnForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/lab/labReturn.jsp" />
+         <forward name="loadStock" path="/lab/labReturnUpd.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/lab/labReChk"
+    type="ft.com.lab.LabRecheckAction"
+   name="labrecheckForm"
+   parameter="method"
+   scope="session">
+    <forward name="load" path="/lab/labRechk.jsp" />
+    <forward name="loadView" path="/lab/viewLabRechk.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    <action path="/lab/multilab"
+    type="ft.com.lab.MultiLabAction"
+   name="multiLabForm"
+   parameter="method"
+   scope="request">
+    <forward name="load" path="/lab/miltiLab.jsp" />
+    <forward name="loadDtl" path="/lab/labDetail.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/lab/ajaxLabAction" parameter="method"   type="ft.com.lab.AjaxLabAction" name="labResultForm">
+    </action>
+<action path="/lab/ajaxAssortAction" parameter="method" name="labResultForm" scope="session" type="ft.com.assort.AjaxAssortAction" />
+</action-mappings>
+</struts-config>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+
+
+<form-bean name="hkdeptAllocationForm" type="ft.com.assorthk.DeptAllocationForm" />
+<form-bean name="hkstkKprIssueForm" type="ft.com.assorthk.StkKprIssueForm" />
+<form-bean name="hkpendingRcvForm" type="ft.com.assorthk.PendingRcvForm" />
+
+<form-bean name="hkmagnusReturnForm" type="ft.com.assorthk.AssortReturnForm" />
+
+<form-bean name="verificationHkForm" type="ft.com.assorthk.VerificationHkForm" />
+
+</form-beans>
+<action-mappings>
+
+
+
+
+
+
+    
+    <action path="/assorthk/verificationhk"
+        type="ft.com.assorthk.VerificationHKAction"
+        name="verificationHkForm"
+        parameter="method"
+        scope="request">
+      <forward name="load" path="/assorthk/VerificationHk.jsp" />
+      <forward name="loadSizePkt" path="/assorthk/VerificationSizePkt.jsp" />
+      <forward name="loadSizePktFail" path="/assorthk/VerificationSZPKTFAIL.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/assorthk/DeptAllocation"
+        type="ft.com.assorthk.DeptAllocationAction"
+        name="hkdeptAllocationForm"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/assorthk/DeptAllocation.jsp" />
+      <forward name="process" path="/assorthk/Verification.do?method=load" />
+      <forward name="subdept" path="/assorthk/SubDeptAllocation.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/assorthk/DeptSmry"
+        type="ft.com.assorthk.DeptSmryAction"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/assorthk/DeptSmry.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/assorthk/stkKeeperIssue"
+        type="ft.com.assorthk.StkKprrIssueAction"
+        name="hkstkKprIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assorthk/stkKeeperIssue.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    
+    <action path="/assorthk/pendingRcv"
+        type="ft.com.assorthk.PendingRcvAction"
+        name="hkpendingRcvForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assorthk/pendingRcv.jsp" />
+        <forward name="loadPending" path="/assorthk/pendingRcv.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+
+
+   
+    
+
+    
+</action-mappings>
+</struts-config>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="assortIssueForm" type="ft.com.assort.AssortIssueForm" />
+<form-bean name="assortReturnForm" type="ft.com.assort.AssortReturnForm" />
+<form-bean name="assortFinalRtnForm" type="ft.com.assort.AssortFinalRtnForm" />
+<form-bean name="assortSelectionForm" type="ft.com.assort.AssortSelectionForm" />
+<form-bean name="verificationForm" type="ft.com.assort.VerificationForm" />
+<form-bean name="deptAllocationForm" type="ft.com.assort.DeptAllocationForm" />
+<form-bean name="stkKprIssueForm" type="ft.com.assort.StkKprIssueForm" />
+<form-bean name="pendingRcvForm" type="ft.com.assort.PendingRcvForm" />
+<form-bean name="issuetoMagnusForm" type="ft.com.assort.IssuetoMagnusForm" />
+<form-bean name="magnusReturnForm" type="ft.com.assort.AssortReturnForm" />
+<form-bean name="oddPathEditIssueForm" type="ft.com.assort.OddPathEditIssueForm" />
+</form-beans>
+<action-mappings>
+
+
+<action path="/assort/Verification"
+        type="ft.com.assort.VerificationAction"
+        name="verificationForm"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/assort/Verification.jsp" />
+      <forward name="process" path="/assort/DeptAllocation.do?method=load" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/assort/DeptAllocation"
+        type="ft.com.assort.DeptAllocationAction"
+        name="deptAllocationForm"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/assort/DeptAllocation.jsp" />
+      <forward name="process" path="/assort/Verification.do?method=load" />
+      <forward name="subdept" path="/assort/SubDeptAllocation.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/assort/DeptSmry"
+        type="ft.com.assort.DeptSmryAction"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/assort/DeptSmry.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/assort/stkKeeperIssue"
+        type="ft.com.assort.StkKprrIssueAction"
+        name="stkKprIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/stkKeeperIssue.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/assort/pendingRcv"
+        type="ft.com.assort.PendingRcvAction"
+        name="pendingRcvForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/pendingRcv.jsp" />
+        <forward name="loadPending" path="/assort/pendingRcv.do?method=load" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    <action path="/assort/issuetoMagnus"
+        type="ft.com.assort.IssuetoMagnusAction"
+        name="issuetoMagnusForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/issuetoMagnus.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/assort/magnusReturn"
+        type="ft.com.assort.MagnusReturnAction"
+        name="assortReturnForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/magnusReturn.jsp" />
+        <forward name="loadStock" path="/assort/magnusRtnUpd.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+
+    <action path="/assort/assortSelection"
+        type="ft.com.assort.AssortSelectionAction"
+        name="assortSelectionForm"
+        parameter="method"
+        scope="session">
+      <forward name="load" path="/assort/assortSelection.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   <action path="/assort/assortIssue"
+        type="ft.com.assort.AssortIssueAction"
+        name="assortIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/assortIssue.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/assort/assortReturn"
+        type="ft.com.assort.AssortReturnAction"
+        name="assortReturnForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/assortReturn.jsp" />
+        <forward name="loadStock" path="/assort/assortRtnUpd.jsp" />
+        <forward name="multiPrp" path="/assort/assortRtnMultiPrpUpd.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+     <action path="/assort/assortFinalRtn"
+        type="ft.com.assort.AssortFinalRtnAction"
+        name="assortFinalRtnForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/assortFinalRtn.jsp" />
+        <forward name="loadStock" path="/assort/assortFinalRtnUpd.jsp" />
+        <forward name="multiPrp" path="/assort/assortMutiPrpUpd.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/assort/oddPathIssue"
+        type="ft.com.assort.OddPathEditIssueAction"
+        name="oddPathEditIssueForm"
+        parameter="method"
+        scope="session">
+        <forward name="load" path="/assort/oddIssuePathEdit.jsp" />
+               <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/assort/ajaxAssortAction" parameter="method"    name="assortReturnForm"   type="ft.com.assort.AjaxAssortAction" />
+ <action path="/assort/ajaxLabAction" parameter="method"   type="ft.com.lab.AjaxLabAction" name="labResultForm"/>
+ <action path="/assort/ajaxPrcAction" parameter="method"   type="ft.com.pri.AjaxPriceAction" name="priGrpForm"/>
+</action-mappings>
+</struts-config>

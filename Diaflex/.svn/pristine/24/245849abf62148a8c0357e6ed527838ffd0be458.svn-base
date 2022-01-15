@@ -1,0 +1,131 @@
+body{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size:10pt;
+color: Black;
+}
+a {
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size:10pt;
+    text-decoration:underline;
+    color:Blue;
+}
+a:active { color:Maroon; }
+
+.textFont{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size:9pt;
+color: Black;
+
+}
+
+.info{
+    border:1px solid  rgb(115,115,115) ;
+    width: 80%;
+    border-collapse:collapse;
+}
+
+table.srchList{
+    border:1px solid  rgb(115,115,115) ;
+   white-space: nowrap;
+    padding:5px;
+    border-collapse:collapse;
+}
+table.srchList td {
+    border:1px solid  rgb(115,115,115) ;
+}
+.heder{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size: 11pt;
+width: 100%;
+font-weight: bold;
+color: Black;
+height: 16px;
+background-color: rgb(181,181,181);
+}
+.tblHdr{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size: 10pt;
+font-weight: Bold;
+color: Black;
+height: 16px;
+background-color: rgb(181,181,181);
+}
+.pgTtl{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size: 11pt;
+font-weight: Bold;
+color: Maroon;
+height: 16px;
+}
+.borTb{
+    background-color: rgb(181,181,181);
+}
+.borTb td{
+    background-color: White;
+}
+
+.hederDsc{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size: 10pt;
+width: 100%;
+font-weight: bold;
+color: Black;
+height: 20px;
+}
+
+.info td{
+font-family: Calibri, Arial, Helvetica, sans-serif;
+font-size: 11pt;
+color: Black;
+height: 16px;
+/*border:1px dotted Gray   ;*/
+}
+.hedinfo{
+   background-color: rgb(181,181,181) ;
+}
+.headPrp{
+    float: left;
+    padding-left:5px;
+    padding-right:5px;
+   
+}
+
+.txtBox {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    border:1px solid rgb(165,165,165); 
+}
+
+.txtBoxYellow {
+    background-color:Yellow;
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    border:1px solid rgb(165,165,165); 
+}
+.blue{
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: Blue;
+     border:1px solid rgb(165,165,165); 
+     text-align: center;
+}
+.red{
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color:Red;
+    border:1px solid rgb(165,165,165); 
+    text-align: center;
+}
+.wap{
+ white-space: pre;
+}
+.textBoxes{
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    border:1px solid rgb(165,165,165); 
+    height: 15px; 
+  
+}
+.redTxt{
+    color: Red;
+}

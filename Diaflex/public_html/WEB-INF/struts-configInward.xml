@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+ <form-bean name="issueForm" type="ft.com.inward.IssueResultForm"/>
+ <form-bean name="issueRckForm" type="ft.com.inward.IssueRecheckFrom"/>
+ <form-bean name="AssortLabReportForm" type="ft.com.inward.AssortLabReportForm"/>
+ <form-bean name="transferToMktSHForm" type="ft.com.inward.TransferToMktSHForm" />
+
+
+ </form-beans>
+ 
+ <action-mappings>
+ <action path="/Inward/IssueResult" type="ft.com.inward.IssueResultAction"
+        name="issueForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/Inward/IssueResult.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ <action path="/Inward/IssueRecheck" type="ft.com.inward.IssueRecheckAction"
+        name="issueRckForm"
+        parameter="method"
+        scope="request">
+    <forward name="load" path="/Inward/IssueRecheck.jsp"/>
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+ </action>
+ <action path="/Inward/assortlabreport" type="ft.com.inward.AssortLabReport"
+name="AssortLabReportForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/Inward/AssortLabReport.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+   <action path="/Inward/transferMktSH"
+        type="ft.com.inward.TransferToMktSH"
+        name="transferToMktSHForm"
+        parameter="method"
+        scope="request">
+         <forward name="load" path="/Inward/transferToMktSH.jsp" />
+         <forward name="loadPrc" path="/Inward/reprcStatusSH.jsp" />
+         <forward name="details" path="/Inward/plottingSH.jsp" />
+             <forward name="updatetrf" path="/Inward/stockUpd.jsp" />
+                 <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    <action path="/Inward/StockPrpUpd"
+        type="ft.com.marketing.StockPrpUpdAction"
+        name="stockPrpUpdForm"
+        parameter="method"
+        scope="request">
+   
+      <forward name="loadBulkPrp" path="/marketing/stockBulkUpd.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    
+  </action>
+    
+ <action path="/Inward/ajaxPrcAction"
+        type="ft.com.pricing.AjaxPrcAction"
+        name="transferToMktSHForm"
+        parameter="method"/>
+
+
+<action path="/Inward/ajaxissueAction" parameter="method" name="AssortLabReportForm" scope="session" type="ft.com.inward.AjaxIssueAction" />
+
+ </action-mappings>
+</struts-config>

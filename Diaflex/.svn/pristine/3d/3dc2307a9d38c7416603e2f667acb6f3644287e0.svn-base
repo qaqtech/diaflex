@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+
+    <form-bean name="nmeSrchForm" type="org.apache.struts.action.DynaActionForm">
+      <form-property name="typ" type="java.lang.String"/>
+        <form-property name="dpt" type="java.lang.String"/>
+      <form-property name="nmeFltr" type="java.lang.String"/>
+      <form-property name="nmeID" type="java.lang.String"/>
+      <form-property name="emp" type="java.lang.String"/>
+      <form-property name="nme" type="java.lang.String"/>
+      <form-property name="addr" type="java.lang.String"/>
+      <form-property name="attrDtl" type="java.lang.String"/>
+      <form-property name="usr" type="java.lang.String"/>
+      <form-property name="country" type="java.lang.String"/>
+    </form-bean>
+    <form-bean name="nmeForm" type="ft.com.contact.NmeFrm"/>
+    <form-bean name="addressForm" type="ft.com.contact.AddressFrm"/>
+    <form-bean name="nmeDtlForm" type="ft.com.contact.NmeDtlFrm"/>
+    <form-bean name="nmeRelForm" type="ft.com.contact.NmeRelFrm"/>
+    <form-bean name="nmeCommForm" type="ft.com.contact.NmeCommFrm"/>
+    <form-bean name="nmeDocForm" type="ft.com.contact.NmeDocFrm"/>
+    <form-bean name="nmeGrpForm" type="ft.com.contact.NmeGrpFrm"/>
+    <form-bean name="webAccessForm" type="ft.com.contact.WebAccessFrm"/>
+    <form-bean name="nmeGrpDtlForm" type="ft.com.contact.NmeGrpDtlFrm"/>
+    <form-bean name="columnMapForm" type="ft.com.contact.ColumnMapForm"/>
+    <form-bean name="prpMapForm" type="ft.com.contact.PropertieMapForm"/>
+    <form-bean name="mailForm" type="ft.com.contact.MailForm" />
+    <form-bean name="advContactForm" type="ft.com.contact.AdvContactForm" />
+   <form-bean name="NmeEditFrm" type="ft.com.contact.NmeEditFrm"/>
+
+</form-beans>
+<action-mappings>
+<action path="/contact/ajaxContactAction" 
+        type="ft.com.AjaxContactAction" />
+        
+ <action path="/contact/ajaxVerifyContactAction" parameter="method" 
+ name="webAccessForm" scope="session" type="ft.com.contact.AjaxContactsAction" />
+<action path="/contact/searchContact"
+        type="ft.com.contact.SearchContactAction"
+        name="nmeSrchForm"
+        parameter="method"
+        scope="request">
+        <forward name="success" path="/contact/nme.do?method=loadSearch"/>
+        <forward name="result" path="/contact/nme.do?method=loadSearch"/>
+        <forward name="nodata" path="/contact/contactSearch.jsp?nodata=Y" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/contact/nme"
+        type="ft.com.contact.NmeAction"
+        name="nmeForm"
+        parameter="method"
+        scope="request">
+        <forward name="searchlst" path="/contact/contact.jsp?search=Y" />
+        <forward name="reset" path="/contacts/contact.jsp" />
+        <forward name="view" path="/contact/contact.jsp?view=Y" />
+        <forward name="load" path="/contact/contactMasterFrm.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+   <action path="/contact/address"
+        type="ft.com.contact.AddressAction"
+        name="addressForm"
+        parameter="method"
+        scope="request">
+        <forward name="searchlst" path="/contacts/address.jsp" />
+        <forward name="load" path="/contact/address.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+   <action path="/contact/nmedtl"
+        type="ft.com.contact.NmeDtlAction"
+        name="nmeDtlForm"
+        parameter="method"
+        scope="request">
+        <forward name="nmedtl" path="/contact/nmedtl.jsp" />
+        <forward name="view" path="/contact/nmedtl.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+   <action path="/contact/nmerel"
+        type="ft.com.contact.NmeRelAction"
+        name="nmeRelForm"
+        parameter="method"
+        scope="request" validate="true">
+        <forward name="searchlst" path="/contact/nmerel.jsp" />
+        <forward name="view" path="/contact/nmerel.jsp?view=Y" />
+        <forward name="approvelst" path="/contact/nmerel.jsp?approve=Y" />
+        <forward name="approve" path="/contact/nmerelApprove.jsp" />
+        <forward name="reset" path="/contact/nmerel.jsp" />
+        <forward name="loadwebusr" path="/contact/vldInvalidterms.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+   
+   <action path="/contact/webaccess"
+        type="ft.com.contact.WebAccessAction"
+        name="webAccessForm"
+        parameter="method"
+        scope="request">
+        <forward name="searchlst" path="/contact/webaccess.jsp" />
+        <forward name="view" path="/contact/webaccess.jsp?view=Y" />
+        <forward name="approvelst" path="/contact/webaccess.jsp?approve=Y" />
+        <forward name="reset" path="/contact/webaccess.jsp" />
+           <forward name="role" path="/contact/webUsrRole.jsp" />
+                   <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+   <action path="/contact/nmecomm"
+        type="ft.com.contact.NmeCommAction"
+        name="nmeCommForm"
+        parameter="method"
+        scope="request">
+        <forward name="searchlst" path="/contact/nmecomm.jsp" />
+        <forward name="view" path="/contact/nmecomm.jsp?view=Y" />
+        <forward name="approvelst" path="/contact/nmecomm.jsp?approve=Y" />
+        <forward name="reset" path="/contact/nmecomm.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+   <action path="/contact/nmedocs"
+    type="ft.com.contact.NmeDocAction"
+    name="nmeDocForm"
+    parameter="method"
+    scope="request"
+    >
+    <forward name="view" path="/contact/nmeDocs.jsp" />
+            <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+   </action>
+   
+   <action path="/contact/nmegrp"
+        type="ft.com.contact.NmeGrpAction"
+        name="nmeGrpForm"
+        parameter="method"
+        scope="request">
+        <forward name="searchlst" path="/contact/nmegrp.jsp" />
+        <forward name="view" path="/contact/nmegrp.jsp?view=Y" />
+        <forward name="reset" path="/contact/nmegrp.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+   
+   <action path="/contact/nmegrpdtl"
+        type="ft.com.contact.NmeGrpDtlAction"
+        name="nmeGrpDtlForm"
+        parameter="method"
+        scope="request">
+        <forward name="searchlst" path="/contact/nmeGrpDtl.jsp" />
+        <forward name="view" path="/contact/nmeGrpDtl.jsp?view=Y" />
+        <forward name="define" path="/contact/nmeGrp.jsp" />
+        <forward name="reset" path="/contact/nmeGrpDtl.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/contact/columnMap"
+        type="ft.com.contact.ColumnMapAction"
+        name="columnMapForm"
+        parameter="method"
+        scope="request">
+          <forward name="view" path="/contact/columnMap.jsp" />
+      <forward name="copymap" path="/contact/copymapping.jsp" />
+
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+    <action path="/contact/propertieMap"
+        type="ft.com.contact.PropertieMapAction"
+        name="prpMapForm"
+        parameter="method"
+        scope="request">
+          <forward name="view" path="/contact/propertieMap.jsp" />
+              <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+      
+    </action>
+     <action path="/contact/massmail" type="ft.com.contact.MailAction"
+             name="mailForm"
+             parameter="method"
+             scope="request">
+<forward name="view" path="/contact/mail.jsp" />
+<forward name="viewmail" path="/contact/mail.jsp" />
+<forward name="success" path="/contact/mailsuccess.jsp" />
+<forward name="memoreport" path="/marketing/memoReport.do?method=load" />
+<forward name="search" path="/marketing/StockSearch.do?method=load" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+ 
+ <action path="/contact/advcontact"
+type="ft.com.contact.AdvContactAction"
+name="advContactForm"
+parameter="method"
+scope="request">
+<forward name="searchlst" path="/contact/advcontact.jsp" />
+<forward name="load" path="/contact/contactAdminSrch.jsp" />
+<forward name="loadDtl" path="/contact/contactwebDtls.jsp"/>
+<forward name="loadreport" path="/contact/mailReport.jsp"/>
+<forward name="loadloyrpt" path="/contact/ContactLoyRpt.jsp"/>
+<forward name="loadclientFeedback" path="/contact/clientFeedback.jsp"/>
+<forward name="loadFeedback" path="/contact/feedback.jsp"/>
+<forward name="loadpa" path="/contact/pendingapprove.jsp"/>
+<forward name="loadCreateNew" redirect="true" path="/contact/nme.do?method=load"/>
+
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+ <action path="/contact/bulkUpdate"
+type="ft.com.contact.BulkUpdateAction"
+name="advContactForm"
+parameter="method"
+scope="request">
+<forward name="load" path="/contact/contactBulkUpd.jsp" />
+<forward name="view" path="/contact/bulkwebassignrole.jsp"/>
+<forward name="loadSaleExAlloc" path="/contact/SaleExAlloc.jsp"/>
+<forward name="loadSaleEx" path="/contact/SaleEx.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+<action path="/contact/nmeEdit"
+type="ft.com.contact.nmeEdit"
+name="NmeEditFrm"
+parameter="method"
+scope="request">
+<forward name="load" path="/contact/contactMasterEdit.jsp" />
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+</action>
+
+   <action path="/contact/ajaxsrchAction" parameter="method" name="searchForm" scope="session" type="ft.com.marketing.AjaxSrchAction" />
+ 
+
+</action-mappings>
+</struts-config>

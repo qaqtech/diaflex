@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+    <form-bean name="userrightsform" type="ft.com.dashboard.UserRightsForm"/>
+     <form-bean name="dashBoardHomeform" type="ft.com.dashboard.DashBoardHomeForm"/>
+</form-beans>
+<action-mappings>
+<action path="/dashboard/usrright"
+        type="ft.com.dashboard.UserRightsAction"
+        name="userrightsform"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/dashboard/usrright.jsp" />
+        <forward name="loadright" path="/dashboard/assignusrright.jsp" />
+        <forward name="loadeusrdf" path="/dashboard/usrrights.jsp"/>
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+    </action>
+    <action path="/dashboard/screen" parameter="method"
+          type="ft.com.dashboard.ScreenAction" name="userrightsform"
+          scope="session">
+  <forward name="load" path="/dashboard/dtl.jsp"/>
+   <forward name="loadwebaccesssmmyApi" path="/dashboard/dtlApi.jsp"/>
+  <forward name="loadinternal" path="/dashboard/internaldtl.jsp"/>
+  <forward name="loadconsignmentpnd" path="/dashboard/loadconsignmentpnd.jsp"/>
+  <forward name="loadconsignment" path="/dashboard/consignmentdtl.jsp"/>
+  <forward name="loadconsignmentsale" path="/dashboard/consignmentsaledtl.jsp"/>
+  <forward name="loadexternal" path="/dashboard/externaldtl.jsp"/>
+  <forward name="loadhold" path="/dashboard/holddtl.jsp"/>
+  <forward name="loadcabinreq" path="/dashboard/cabinreqdtl.jsp"/>
+  <forward name="loadwebapp" path="/dashboard/webappdtl.jsp"/>
+  <forward name="loadextapp" path="/dashboard/extappdtl.jsp"/>
+  <forward name="loadintapp" path="/dashboard/intappdtl.jsp"/>
+  <forward name="loadapprove" path="/dashboard/dailyapprove.jsp"/>
+  <forward name="loadsale" path="/dashboard/dailysale.jsp"/>
+    <forward name="loadbrc" path="/dashboard/dailybrc.jsp"/>
+  <forward name="loaddailyinward" path="/dashboard/dailyinward.jsp"/>
+  <forward name="loaddlv" path="/dashboard/dailydlv.jsp"/>
+  <forward name="loaddf" path="/dashboard/offerdf.jsp"/>
+  <forward name="loadweb" path="/dashboard/offerweb.jsp"/>
+  <forward name="loadwebaccess" path="/dashboard/loadwebaccess.jsp"/>
+  <forward name="loadstkaccess" path="/dashboard/loadstkaccess.jsp"/>
+  <forward name="loaddfaccess" path="/dashboard/loaddfaccess.jsp"/>
+  <forward name="loadwebpending" path="/dashboard/loadwebpending.jsp"/>
+  <forward name="loaddfwebdtl" path="/dashboard/loaddfwebdtl.jsp"/>
+  <forward name="loaddob" path="/dashboard/birthday.jsp"/>
+  <forward name="loadannidte" path="/dashboard/adte.jsp"/>
+  <forward name="loadpurbuy" path="/dashboard/purbuypage.jsp"/>
+  <forward name="loadpurreview" path="/dashboard/purreviewpage.jsp"/>
+  <forward name="loadpuroffer" path="/dashboard/purofferpage.jsp"/>
+  <forward name="loadDailyMemoTypI" path="/dashboard/dailymemotypinternal.jsp"/>
+  <forward name="loadDailyMemoTypE" path="/dashboard/dailymemotypexternal.jsp"/>
+  <forward name="loadDailyMemoTypWH" path="/dashboard/dailymemotypwebhold.jsp"/>
+  <forward name="loadDailyMemoTypZ" path="/dashboard/dailymemotyplist.jsp"/>
+  <forward name="loadlaballocation" path="/dashboard/laballocation.jsp"/>
+  <forward name="loadLivestockandsale" path="/dashboard/liveStockandSale.jsp"/>
+  <forward name="loadChart" path="/dashboard/dailyReportPieChart.jsp"/>
+  <forward name="loadsalertn" path="/dashboard/saleRtn.jsp"/>
+  <forward name="loaddlvrtn" path="/dashboard/dailydlvRtn.jsp"/>
+    <forward name="hitratio" path="/dashboard/hitratio.jsp"/>
+    <forward name="loadT20Grid" path="/dashboard/t20.jsp"/>
+    <forward name="loadopenclose" path="/dashboard/dashopenclose.jsp"/>
+    <forward name="pktDtl" path="/stockResult.jsp" />
+        <forward name="loadgrpcomp" path="/dashboard/grpcomparasion.jsp"/>
+        <forward name="loadgrpcompmix" path="/dashboard/grpcomparasionMix.jsp"/>
+        <forward name="netloadgrpcomp" path="/dashboard/netgrpcomparasion.jsp"/>
+        <forward name="rapsync" path="/dashboard/rapsync.jsp"/>
+        <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+  </action>
+  <action path="/dashboard/propertyblock"
+        type="ft.com.dashboard.PropertyBlockAction"
+        name="userrightsform"
+        parameter="method"
+        scope="request">
+        <forward name="load" path="/dashboard/propertyblock.jsp" />
+                <forward name="sessionTO" redirect="false" path="/home.do?method=sessionTO"/>
+        <forward name="connExists" redirect="false" path="/home.do?method=connExists"/>
+        <forward name="chktimeout" redirect="false" path="/home.do?method=loginInvalid"/>
+        <forward name="unauthorized" redirect="false" path="/home.do?method=unauthorized"/>
+    </action>
+    
+<action path="/dashboard/dashBoardHome"
+type="ft.com.dashboard.DashBoardHomeAction"
+name="dashBoardHomeform"
+parameter="method"
+scope="request">
+<forward name="load" path="/dashboard/dashBoardHome.jsp" />
+</action>
+      
+      <action path="/dashboard/ajaxdashAction" parameter="method"    name="userrightsform"   type="ft.com.dashboard.AjaxDashAction" />
+</action-mappings>
+</struts-config>

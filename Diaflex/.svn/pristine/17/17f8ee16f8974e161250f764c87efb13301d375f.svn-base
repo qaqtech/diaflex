@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>app prc chng</title>
+<style type="text/css">
+body {
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight:normal;
+}
+</style>
+<script type="text/javascript">
+function appVerify(rowNum) {
+	var glbl_typ = document.getElementById('glbl_typ').value;
+	var glbl_chng = document.getElementById('glbl_chng').value;
+	var ctr = document.getElementById('ttl_cnt').value; 
+	var frmCtr = 1 ;
+	var toCtr = ctr ;
+	if(rowNum > 0) {
+		toCtr = rowNum ;
+		frmCtr = rowNum ;
+		glbl_typ = document.getElementById(rowNum+'_typ').value;
+		glbl_chng = document.getElementById(rowNum+'_chng').value;
+	}	
+	if(isNaN(glbl_chng)) {
+		//alert('Not a valid change');
+	} else {
+		if(parseFloat(glbl_chng) != 0) {
+			//alert(glbl_typ);
+			calcAvgs(ctr);	
+			
+			if(glbl_typ == 'AVG_PRC')
+				setAvgPrc(glbl_typ, glbl_chng, frmCtr, toCtr);
+			if(glbl_typ == 'AVG_DIS')
+				setAvgDis(glbl_typ, glbl_chng, frmCtr, toCtr);
+			if(glbl_typ == 'PER_CRT_USD')
+				setPerCrtUSD(glbl_typ, glbl_chng, frmCtr, toCtr);
+			if(glbl_typ == 'PER_CRT_PCT')
+				setPerCrtPCT(glbl_typ, glbl_chng, frmCtr, toCtr);
+			if(glbl_typ == 'PER_STONE')
+				setPerStone(glbl_typ, glbl_chng, frmCtr, toCtr);
+				
+			calcAvgs(ctr);	
+		}
+	}	
+}
+
+function setAvgPrc(typ, val, i, ctr) {
+	var lDiff = getDiffPct(val);
+	for(i;i<=ctr;i++) {
+		var lDiff = getDiffPct(val);
+		var lQuot = parseFloat(document.getElementById(i+'_quot').value);
+		var lChng = new Number(lQuot*lDiff);
+		var nwQuot = new Number(lQuot + lChng);
+		document.getElementById(i+'_typ').value = typ ;
+		document.getElementById(i+'_fnl').value = nwQuot.toFixed(2);
+		document.getElementById(i+'_chng').value = lChng.toFixed(2);
+	}
+}
+
+function setAvgDis(typ, val, i, ctr) {
+//	var lDiff = getDiffPct(val);
+	for(i;i<=ctr;i++) {
+		var lQuot = parseFloat(document.getElementById(i+'_quot').value);
+		var lDis = parseFloat(document.getElementById(i+'_dis').value);
+		var lRap = parseFloat(document.getElementById(i+'_rap').value);
+		var lChng = new Number(lDis + parseFloat(val));
+		var nwQuot = new Number(lRap*(100 + lChng)/100);
+		document.getElementById(i+'_typ').value = typ ;
+		//alert(i + " : " + nwQuot);
+		document.getElementById(i+'_fnl').value = nwQuot.toFixed(2);
+		document.getElementById(i+'_chng').value = lChng.toFixed(2);
+	}
+}
+function setPerCrtUSD(typ, val, i, ctr) {
+	for(i;i<=ctr;i++) {
+		var lQuot = parseFloat(document.getElementById(i+'_quot').value);
+		var lChng = new Number(parseFloat(val));
+		var nwQuot = new Number(lQuot + lChng);
+		document.getElementById(i+'_typ').value = typ ;
+		document.getElementById(i+'_fnl').value = nwQuot.toFixed(2);
+		document.getElementById(i+'_chng').value = lChng.toFixed(2);
+	}
+}
+
+function setPerCrtPCT(typ, val, i, ctr) {
+	for(i;i<=ctr;i++) {
+		var lQuot = parseFloat(document.getElementById(i+'_quot').value);
+		var lChng = new Number(parseFloat(val));
+		var nwQuot = new Number(lQuot * (100 + lChng)/100);
+		document.getElementById(i+'_typ').value = typ ;
+		document.getElementById(i+'_fnl').value = nwQuot.toFixed(2);
+		document.getElementById(i+'_chng').value = lChng.toFixed(2);
+	}
+	
+}
+
+function setPerStone(typ, val, i, ctr) {
+	for(i;i<=ctr;i++) {
+		var lQuot = parseFloat(document.getElementById(i+'_quot').value);
+		var lCts = parseFloat(document.getElementById(i+'_cts').value);
+		var lChng = new Number(val/lCts);
+		var nwQuot = new Number(lQuot + lChng);
+		document.getElementById(i+'_typ').value = typ ;
+		document.getElementById(i+'_fnl').value = nwQuot.toFixed(2);
+		document.getElementById(i+'_chng').value = lChng.toFixed(2);
+	}
+	
+}
+
+function getDiffPct(val) {
+	var lDiff = 0 ;
+	//lDiff = (new Number(lDiff)).toFixed( ;
+	var ttlCts = document.getElementById('glbl_cts').value ;
+	var rapVlu = document.getElementById('glbl_rap_vlu').value ;
+	var oldVlu = document.getElementById('old_vlu').value ;
+	var oldAvg = oldVlu/ttlCts ;
+	var newAvg = oldAvg + val;
+	lDiff = val/oldAvg ;
+	return lDiff;
+}
+function calcAvgs(ctr) {
+	var rapVlu = 0 ;
+	var quotVlu = 0 ;
+	var nwVlu = 0 ;
+	var ttlCts = 0 ;
+	for(i=1;i<=ctr;i++) {
+		
+		var lCts = parseInt(document.getElementById(i+'_cts').value*100);
+		lCts = parseFloat(lCts/100);
+		ttlCts = ttlCts + lCts ;
+		//lCts =  lCts.toDecimals(2); //Math.Floor(parseFloat(lCts)*100)/100;
+		//alert(lCts);
+		var lRap = get2DigitNum(document.getElementById(i+'_rap').value*lCts); //parseInt(document.getElementById(i+'_rap').value);
+		var lQuot = get2DigitNum(document.getElementById(i+'_quot').value*lCts); //parseInt(document.getElementById(i+'_quot').value);
+		var lNw = get2DigitNum(document.getElementById(i+'_fnl').value*lCts); //parseInt(document.getElementById(i+'_quot').value);
+		
+		rapVlu = rapVlu + lRap ; //(lRap*lCts);
+		quotVlu = quotVlu + lQuot ; //(lQuot*lCts);
+		nwVlu = nwVlu + lNw ;
+	}	
+	rapVlu = Math.ceil(rapVlu);//get2DigitNum(rapVlu);
+	quotVlu = Math.ceil(quotVlu);
+	nwVlu = Math.ceil(nwVlu);
+	ttlCts = (new Number(ttlCts)).toFixed(2);
+	document.getElementById('glbl_cts').value = ttlCts ;
+	document.getElementById('glbl_rap_vlu').value = rapVlu ;
+	document.getElementById('old_vlu').value = quotVlu ;
+	document.getElementById('old_dis').value = get2DigitNum((quotVlu/rapVlu*100) - 100);//parseFloat(parseInt(((quotVlu/rapVlu*100) - 100)*100)/100);
+	document.getElementById('old_avg').value = get2DigitNum(quotVlu/ttlCts);
+	document.getElementById('new_vlu').value = nwVlu ;
+	document.getElementById('new_dis').value = get2DigitNum((nwVlu/rapVlu*100) - 100);//parseFloat(parseInt(((quotVlu/rapVlu*100) - 100)*100)/100);
+	document.getElementById('new_avg').value = get2DigitNum(nwVlu/ttlCts);
+	
+}
+function get2DigitNum(lNum) {
+	return parseFloat(parseInt(lNum*100)/100);//(new Number(lNum)).toFixed(2);//parseFloat(parseInt(lNum*100)/100);
+}
+function get2DigitRnd(lNum) {
+	return parseInt(lNum);
+}
+</script>
+</head>
+<body>
+<form>
+<table>
+<tr><td>Typ</td>
+<td>
+	<select name="glbl_typ" id="glbl_typ">
+	<option value="AVG_PRC">Avg Prc</option>
+	<option value="AVG_DIS">Avg Dis</option>
+	<option value="PER_CRT_USD">Per Crt USD</option>
+	<option value="PER_CRT_PCT">Per Crt %</option>
+	<option value="PER_STONE">Per Stone</option>
+	</select>
+</td>
+</tr>
+<tr><td>Value</td>
+<td><input type="text" name="glbl_chng" id="glbl_chng" value="0"/></td>
+</tr>
+<tr><td colspan="2">
+<input type="button" name="verify" value="Verify" onClick="appVerify(0)"/></td>
+</tr>
+<tr><td>Cts</td>
+<td><input type="text" name="glbl_cts" id="glbl_cts"/></td>
+</tr>
+<tr><td>Rap Value</td>
+<td><input type="text" name="glbl_rap_vlu" id="glbl_rap_vlu"/></td>
+</tr>
+<tr><td>Old</td>
+<td>
+	Value&nbsp;<input type="text" name="old_vlu" id="old_vlu"/>
+	&nbsp;Dis&nbsp;<input type="text" name="old_dis" id="old_dis"/>
+	&nbsp;Avg&nbsp;<input type="text" name="old_avg" id="old_avg"/>
+</td>
+</tr>
+<tr><td>New</td>
+<td>
+	Value&nbsp;<input type="text" name="new_vlu" id="new_vlu"/>
+	&nbsp;Dis&nbsp;<input type="text" name="new_dis" id="new_dis"/>
+	&nbsp;Avg&nbsp;<input type="text" name="new_avg" id="new_avg"/>
+</td>
+</tr>
+<table>
+<tr>
+	<td>SrNo</td><td>PktNo</td>
+	<td>Shp</td><td>Cts</td><td>Col</td><td>Clr</td>
+	<td>RapRte</td><td>Dis</td><td>Quot</td><td>Typ</td><td>Chng</td><td>FinalPrice</td>
+</tr>
+<tr>
+	<td>1</td><td>101</td>
+	<td>RD</td>
+	<td><input type="text" name="101_cts" id="1_cts" value="2.20" readonly="true"/></td>
+	<td>F</td><td>VS1</td>
+	<td><input type="text" name="101_rap" id="1_rap" value="16000" readonly="true"/></td>
+	<td><input type="text" name="101_dis" id="1_dis" value="-30" readonly="true"/></td>
+	<td><input type="text" name="101_quot" id="1_quot" value="11200" readonly="true"/>
+		<input type="hidden" name="101_vlu" id="1_vlu" value="24640"/>
+		<input type="hidden" name="101_rap_vlu" id="1_rap_vlu" value="35200"/>
+		<input type="hidden" name="101_fnl_vlu" id="1_fnl_vlu" value=""/>
+	</td>
+	<td><select name="101_typ" id="1_typ" onChange="appVerify(1);"/>
+		<option value="AVG_PRC">Avg Prc</option>
+		<option value="AVG_DIS">Avg Dis</option>
+		<option value="PER_CRT_USD">Per Crt USD</option>
+		<option value="PER_CRT_PCT">Per Crt %</option>
+		<option value="PER_STONE">Per Stone</option>
+		</select>
+	</td>
+	<td><input type="text" name="101_chng" id="1_chng" value="" onChange="appVerify(1);"/></td>
+	<td><input type="text" name="101_fnl" id="1_fnl" value="11200" readonly="true"/></td>
+</tr>
+<tr>
+	<td>2</td><td>102</td>
+	<td>RD</td>
+	<td><input type="text" name="102_cts" id="2_cts" value="1.136" readonly="true"/></td>
+	<td>H</td><td>VS1</td>
+	<td><input type="text" name="102_rap" id="2_rap" value="12000" readonly="true"/></td>
+	<td><input type="text" name="102_dis" id="2_dis" value="-40" readonly="true"/></td>
+	<td><input type="text" name="102_quot" id="2_quot" value="7200" readonly="true"/>
+		<input type="hidden" name="102_vlu" id="2_vlu" value="7920"/>
+		<input type="hidden" name="102_rap_vlu" id="2_rap_vlu" value="13200"/>
+		<input type="hidden" name="102_fnl_vlu" id="2_fnl_vlu" value=""/>
+	</td>
+	<td><select name="102_typ" id="2_typ" onChange="appVerify(2);"/>
+		<option value="AVG_PRC">Avg Prc</option>
+		<option value="AVG_DIS">Avg Dis</option>
+		<option value="PER_CRT_USD">Per Crt USD</option>
+		<option value="PER_CRT_PCT">Per Crt %</option>
+		<option value="PER_STONE">Per Stone</option>
+	</select>
+	</td>
+	<td><input type="text" name="102_chng" id="2_chng" value="" onChange="appVerify(2);"//></td>
+	<td><input type="text" name="102_fnl" id="2_fnl" value="7200"/></td>
+</tr>
+<tr>
+	<td>3</td><td>103</td>
+	<td>RD</td>
+	<td><input type="text" name="103_cts" id="3_cts" value="0.90" readonly="true"/></td>
+	<td>H</td><td>SI1</td>
+	<td><input type="text" name="103_rap" id="3_rap" value="7000" readonly="true"/></td>
+	<td><input type="text" name="103_dis" id="3_dis" value="-30" readonly="true"/></td>
+	<td><input type="text" name="103_quot" id="3_quot" value="4900" readonly="true"/>
+		<input type="hidden" name="103_vlu" id="3_vlu" value="4410"/>
+		<input type="hidden" name="103_rap_vlu" id="3_rap_vlu" value="6300"/>
+		<input type="hidden" name="103_fnl_vlu" id="3_fnl_vlu" value=""/>
+	</td>
+	<td><select name="103_typ" id="3_typ" onChange="appVerify(3);"/>
+		<option value="AVG_PRC">Avg Prc</option>
+		<option value="AVG_DIS">Avg Dis</option>
+		<option value="PER_CRT_USD">Per Crt USD</option>
+		<option value="PER_CRT_PCT">Per Crt %</option>
+		<option value="PER_STONE">Per Stone</option>
+		</select>
+	</td>
+	<td><input type="text" name="103_chng" id="3_chng" value="" onChange="appVerify(3);"//></td>
+	<td><input type="text" name="103_fnl" id="3_fnl" value="4900"/></td>
+</tr>
+</table>
+<input type="hidden" name="ttl_cnt" id="ttl_cnt" value="3"/>
+</form>
+</body>
+</html>
